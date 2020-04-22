@@ -1,0 +1,14 @@
+{
+    "name": "vaalyn/vaachar-theme",
+    "authors": [
+        {
+            "name": "Vaalyn",
+            "email": "vaalyndev@gmail.com"
+        }
+    ],
+    "extra": {
+        "sylius-theme": {
+            "title": "VaaChar Theme"
+        }
+    }
+}
