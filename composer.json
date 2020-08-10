@@ -1,32 +1,35 @@
 {
-    "name": "sylius/sylius-standard",
-    "description": "Starting point for projects powered by Sylius eCommerce.",
+    "name": "vaalyn/sylius-shop",
+    "description": "VaaChar online shop powered by Sylius eCommerce.",
     "keywords": ["symfony", "sylius", "distribution", "ecommerce", "cart", "shopping"],
     "type": "project",
     "license": "MIT",
-    "homepage": "https://sylius.com",
+    "homepage": "https://vaachar.de",
     "authors": [
         {
-            "name": "Paweł Jędrzejewski"
-        },
-        {
-            "name": "Sylius project"
-        },
-        {
-            "name": "Community contributions"
+            "name": "Vaalyn",
+            "email": "vaalyndev@gmail.com"
         }
     ],
     "require": {
         "php": "^7.3",
         "bitbag/cms-plugin": "^2.3",
+        "bitbag/mollie-plugin": "^3.2.6",
+        "bitbag/product-bundle-plugin": "^1.0",
+        "enqueue/enqueue-bundle": "^0.10.1",
+        "enqueue/fs": "^0.10.1",
         "h4cc/wkhtmltoimage-amd64": "^0.12.4",
         "h4cc/wkhtmltopdf-amd64": "^0.12.4",
+        "maxmind-db/reader": "^1.6",
+        "monsieurbiz/sylius-search-plugin": "^0.2.0",
         "setono/sylius-terms-plugin": "^1.0",
-        "sylius/invoicing-plugin": "^0.10.1",
+        "sylius/invoicing-plugin": "dev-dev-add-flysystem-storage",
+        "sylius/refund-plugin": "^1.0.0-RC.3",
         "sylius/sylius": "~1.7.0@rc",
         "symfony/dotenv": "^4.4",
         "symfony/flex": "^1.2",
-        "symfony/webpack-encore-bundle": "^1.7"
+        "symfony/webpack-encore-bundle": "^1.7",
+        "vaachar/sylius-shipping-information-page-plugin": "dev-master"
     },
     "require-dev": {
         "behat/behat": "^3.6.1",
@@ -54,6 +57,16 @@
         "symfony/intl": "^4.4",
         "symfony/web-profiler-bundle": "^4.4"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Vaalyn/InvoicingPlugin"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Vaalyn/sylius-shipping-information-page-plugin.git"
+        }
+    ],
     "prefer-stable": true,
     "autoload": {
         "psr-4": {

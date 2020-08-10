@@ -1,0 +1,18 @@
+sylius:
+    email:
+        order_confirmation_resent: 'Die Auftragsbestätigung wurde erfolgreich nochmals an den Kunden gesendet.'
+        shipment_confirmation_resent: 'Die Versandbestätigung wurde erfolgreich nochmals an den Kunden gesendet.'
+    product_variant:
+        cannot_generate_variants: 'Es können keine Varianten für ein Produkt ohne Optionswerte generiert werden.'
+
+sylius_refund:
+    at_least_one_unit_should_be_selected_to_refund: 'Mindestens eine der Leistungen sollte zur Erstattung ausgewählt werden'
+    order_should_be_paid: 'Die Bestellung muss bezahlt sein, damit die Leistungen zurückerstattet werden können'
+    refund_amount_must_be_greater: 'Rückerstattungsbetrag muss größer als 0 sein'
+    refund_amount_must_be_less: 'Sie können nicht mehr Geld zurückerstatten als die Gesamtsumme der Leistungen'
+    refund_payment_completed: 'Die Rückerstattungszahlung wurde erfolgreich abgeschlossen'
+    resend_credit_memo_failed: 'Erneutes Senden der Gutschrift fehlgeschlagen'
+    resend_credit_memo_success: 'Ausgewählte Gutschrift wurde erfolgreich erneut gesendet'
+    unit_refund_exceeded: 'Sie können nicht mehr Geld zurückerstatten, als die Summe der Leistungen'
+    units_successfully_refunded: 'Ausgewählte Leistungen wurden erfolgreich zurückerstattet'
+    error_occurred: 'Unerwarteter Fehler aufgetreten'

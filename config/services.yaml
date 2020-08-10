@@ -3,6 +3,10 @@
 parameters:
     locale: de_DE
 
+    liip_imagine.mozjpeg.binary: /src/mozjpeg/cjpeg
+
+    sylius.form.type.product.validation_groups: [app_product]
+
 services:
     # Default configuration for services in *this* file
     _defaults:
@@ -26,10 +30,69 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{EventListener,Entity,Migrations,Tests,Kernel.php}'
 
     # Controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+
+    App\EventListener\AdminProductsGridProductBundlePluginListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.grid.admin_product, method: addProductBunldeMainAction }
+            - { name: kernel.event_listener, event: sylius.grid.admin_product_from_taxon, method: addProductBunldeMainAction }
+
+    App\EventListener\ImagesUploadListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.product.post_create, method: produceLiipImagineResolveAllCacheMessages }
+            - { name: kernel.event_listener, event: sylius.product.post_update, method: produceLiipImagineResolveAllCacheMessages }
+            - { name: kernel.event_listener, event: sylius.taxon.post_create, method: produceLiipImagineResolveAllCacheMessages }
+            - { name: kernel.event_listener, event: sylius.taxon.post_update, method: produceLiipImagineResolveAllCacheMessages }
+
+    app.form.extension.type.product_variant_generation:
+        class: App\Form\Extension\ProductVariantGenerationTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\ProductBundle\Form\Type\ProductVariantGenerationType }
+
+    App\Form\Extension\TermsTranslationTypeExtension:
+        tags:
+            - { name: form.type_extension, extended_type: Setono\SyliusTermsPlugin\Form\Type\TermsTranslationType, priority: -1 }
+
+    liip_imagine.cache.manager:
+        class: App\Service\CacheManager\ImageCacheManager
+        arguments:
+            - '@liip_imagine.filter.configuration'
+            - '@router'
+            - '@liip_imagine.cache.signer'
+            - '@event_dispatcher'
+            - '%liip_imagine.cache.resolver.default%'
+
+    liip_imagine.filter.loader.thumbnail:
+        class: App\Imagine\Filter\Loader\ThumbnailFilterLoader
+        tags:
+            - { name: liip_imagine.filter.loader, loader: thumbnail }
+
+    monsieurbiz_sylius_search.block_event_listener.layout.topbar:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - '@@MonsieurBizSyliusSearchPlugin/Topbar/_searchWidget.html.twig'
+        tags:
+            - { name: kernel.event_listener, event: sylius.shop.layout.topbar, method: onBlockEvent }
+
+    # TODO: Remove when elastically_index_class_mapping is configurable
+    JoliCode\Elastically\Client:
+        arguments:
+            $config:
+                host: '%env(MONSIEURBIZ_SEARCHPLUGIN_ES_HOST)%'
+                port: '%env(MONSIEURBIZ_SEARCHPLUGIN_ES_PORT)%'
+                elastically_mappings_directory: '%kernel.project_dir%/vendor/monsieurbiz/sylius-search-plugin/src/Resources/config/elasticsearch/mappings'
+                elastically_index_class_mapping:
+                    documents-de_de: \MonsieurBiz\SyliusSearchPlugin\Model\Document\Result
+                    documents-de: \MonsieurBiz\SyliusSearchPlugin\Model\Document\Result
+                    documents-fr_fr: \MonsieurBiz\SyliusSearchPlugin\Model\Document\Result
+                    documents-fr: \MonsieurBiz\SyliusSearchPlugin\Model\Document\Result
+                    documents-en: \MonsieurBiz\SyliusSearchPlugin\Model\Document\Result
+                    documents-en_us: \MonsieurBiz\SyliusSearchPlugin\Model\Document\Result
+                elastically_bulk_size: 100

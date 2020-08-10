@@ -1,0 +1,13 @@
+{% block content %}
+    {% if resultSet.totalHits == 0 %}
+        <div class="ui fluid card z-depth-2 auto-complete-no-result">
+            <div class="content">
+                <span class="header">{{ 'monsieurbiz_searchplugin.instant.result.no_result'|trans }}</span>
+            </div>
+        </div>
+    {% else %}
+        {% for result in resultSet.results %}
+            {% include '@MonsieurBizSyliusSearchPlugin/Instant/_box.html.twig' with {'result': result} %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

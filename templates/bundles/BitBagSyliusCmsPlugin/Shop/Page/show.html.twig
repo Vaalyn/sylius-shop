@@ -1,0 +1,58 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{%- block title -%}
+    {% if page.title is not empty %}
+        {{ page.title }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{%- endblock -%}
+
+{% block metatags %}
+    {% if page.metaKeywords is not empty %}
+        <meta name="keywords" content="{{ page.metaKeywords }}"/>
+    {% endif %}
+    {% if page.metaDescription is not empty %}
+        <meta name="description" content="{{ page.metaDescription }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui breadcrumb">
+        <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
+        <div class="divider"> /</div>
+        <div class="active section">{{ page.name }}</div>
+    </div>
+
+    <div class="ui hidden divider"></div>
+
+    <div class="ui padded segment">
+        <h1 class="ui center aligned header bitbag-page-name">{{ page.name }}</h1>
+
+        {% if page.image %}
+            <div class="ui grid center aligned">
+                <div class="eight wide column">
+                    {% set path = preview is defined and preview == true ? page.image.path : '/media/image/'~page.image.path %}
+
+                    <img class="page-image ui fluid image" src="{{ path }}" alt="">
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="ui divider"></div>
+
+        <div class="bitbag-page-content">{{ bitbag_cms_render_content(page) }}</div>
+        <div class="ui dividing header"></div>
+        <div class="bitbag-page-sections">
+            {% include '@BitBagSyliusCmsPlugin/Shop/Page/Show/_sections.html.twig' %}
+        </div>
+    </div>
+    {% if page.products|length > 0 %}
+        <h2>
+            {{ 'bitbag_sylius_cms_plugin.ui.page_related_products'|trans }}
+        </h2>
+        <div class="bitbag-page-products">
+            {% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': page.products} %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% block subject %}
+    {{ 'sylius_invoicing_plugin.email.subject'|trans({'%orderNumber%': invoice.OrderNumber, '%channelName%': invoice.channel.name}) }}
+{% endblock %}
+
+<br/><br/>
+
+{% block body %}
+    {{ 'sylius_invoicing_plugin.email.body.hello'|trans }}
+    <br/><br/>
+    {{ 'sylius_invoicing_plugin.email.body.attachment'|trans({'%orderNumber%': invoice.OrderNumber}) }}
+    <br/><br/>
+    {{ 'sylius_invoicing_plugin.email.body.thank_you'|trans }}
+    <br/><br/>
+    <br/>
+    <br/>
+    {{ 'sylius_invoicing_plugin.email.body.greetings'|trans }}
+    <br/><br/>
+    {{ 'sylius_invoicing_plugin.email.body.your_team'|trans({'%channelName%': invoice.channel.name}) }}
+    <br/><br/>
+{% endblock %}

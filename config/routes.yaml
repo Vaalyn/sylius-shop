@@ -1,2 +1,14 @@
 bitbag_sylius_cms_plugin:
     resource: "@BitBagSyliusCmsPlugin/Resources/config/routing.yml"
+
+bitbag_sylius_mollie_plugin:
+    resource: "@BitBagSyliusMolliePlugin/Resources/config/routing.yaml"
+
+bitbag_sylius_product_bundle_plugin:
+    resource: "@BitBagSyliusProductBundlePlugin/Resources/config/routing.yml"
+
+vaachar_sylius_shipping_information_page_plugin:
+    resource: "@VaaCharSyliusShippingInformationPagePlugin/Resources/config/routing.yml"
+
+monsieurbiz_search_plugin:
+    resource: "@MonsieurBizSyliusSearchPlugin/Resources/config/routing.yaml"

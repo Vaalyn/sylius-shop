@@ -1,0 +1,19 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{%- block title -%}
+    {{ terms.name }}
+{%- endblock -%}
+
+{% block content %}
+    {% include '@SetonoSyliusTermsPlugin/Shop/Terms/Show/_breadcrumb.html.twig' %}
+
+    <div class="ui hidden divider"></div>
+
+    <div class="ui padded segment">
+        <h1 class="ui center aligned header">{{ terms.name }}</h1>
+
+        <div class="ui divider"></div>
+
+        {{ terms.content|raw }}
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+<div class="ui right form item">
+        {{ form_start(form, {'action': path('monsieurbiz_sylius_search_post'), 'method': 'POST', 'attr': {'class': 'ui search item autocomplete-search'}}) }}
+        {{ form_errors(form) }}
+
+        <div class="ui autocomplete-search action input required field">
+                <input type="text" id="{{ form.query.vars.id }}" name="{{ form.query.vars.full_name }}" {% if form.query.vars.value is not empty %}value="{{ form.query.vars.value }}" {% endif %}/>
+                <button type="submit" id="{{ form.submit.vars.id }}" name="{{ form.submit.vars.full_name }}" class="ui button"><i class="search icon"></i></button>
+
+                <div class="autocomplete-results results transition"></div>
+        </div>
+        {{ form_end(form, {'render_rest': false}) }}
+</div>
+

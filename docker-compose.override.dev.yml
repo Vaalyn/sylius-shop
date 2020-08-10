@@ -1,0 +1,80 @@
+version: '3.4'
+
+services:
+    php:
+        build:
+            context: .
+            target: sylius_php
+        volumes:
+            - .:/srv/sylius:rw,cached
+            - ./public:/srv/sylius/public:rw,delegated
+
+    enqueue_consumer:
+        build:
+            context: .
+            target: sylius_php
+        volumes:
+            - .:/srv/sylius:rw,cached
+            - ./public:/srv/sylius/public:rw,delegated
+        command: ["bin/console", "enqueue:consume", "--setup-broker", "-vvv"]
+
+    mysql:
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql-data:/var/lib/mysql:rw
+
+    nodejs:
+        image: vaachar/sylius_nodejs:latest
+        build:
+            context: .
+            target: sylius_nodejs
+        depends_on:
+            - php
+        environment:
+            - PHP_HOST=php
+            - PHP_PORT=9000
+        volumes:
+            - .:/srv/sylius:rw,cached
+        ports:
+            - "35729:35729"
+
+    nginx:
+        build:
+            context: .
+            target: sylius_nginx
+        volumes:
+            - ./public:/srv/sylius/public:ro,delegated
+
+    elasticsearch:
+        build:
+            context: .
+            target: sylius_elasticsearch
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+
+    cerebro:
+        image: lmenezes/cerebro
+        ports:
+            - "9000:9000"
+        links:
+            - elasticsearch
+
+    kibana:
+        image: kibana:7.4.0
+        ports:
+            - "5601:5601"
+        environment:
+            - "SERVER_NAME=localhost"
+            - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
+            - "XPACK_GRAPH_ENABLED=false"
+            - "XPACK_ML_ENABLED=false"
+            - "XPACK_REPORTING_ENABLED=false"
+            - "XPACK_SECURITY_ENABLED=false"
+            - "XPACK_WATCHER_ENABLED=false"
+        links:
+            - elasticsearch
+
+volumes:
+    mysql-data:

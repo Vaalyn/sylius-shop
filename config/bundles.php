@@ -62,4 +62,11 @@ return [
     SitemapPlugin\SitemapPlugin::class => ['all' => true],
     BitBag\SyliusCmsPlugin\BitBagSyliusCmsPlugin::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+    Oneup\FlysystemBundle\OneupFlysystemBundle::class => ['all' => true],
+    Sylius\RefundPlugin\SyliusRefundPlugin::class => ['all' => true],
+    BitBag\SyliusProductBundlePlugin\BitBagSyliusProductBundlePlugin::class => ['all' => true],
+    VaaChar\VaaCharSyliusShippingInformationPagePlugin\VaaCharSyliusShippingInformationPagePlugin::class => ['all' => true],
+    Enqueue\Bundle\EnqueueBundle::class => ['all' => true],
+    BitBag\SyliusMolliePlugin\BitBagSyliusMolliePlugin::class => ['all' => true],
+    MonsieurBiz\SyliusSearchPlugin\MonsieurBizSyliusSearchPlugin::class => ['all' => true],
 ];

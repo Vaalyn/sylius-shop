@@ -1,0 +1,20 @@
+<h1 class="ui header">
+    <i class="circular inbox icon"></i>
+    <div class="content">
+        {{ 'sylius_invoicing_plugin.ui.invoice'|trans }} {{ invoice.number }}
+        <div class="sub header">
+            <div class="ui horizontal divided list">
+                <div class="item">
+                    {{ 'sylius_invoicing_plugin.ui.issued_at'|trans }}: <span id="invoice-issued-at">{{ invoice.issuedAt|format_datetime }}</span>
+                </div>
+                <div class="item">
+                    {{ 'sylius_invoicing_plugin.ui.issued_for_order'|trans }}: #{{ invoice.orderNumber }}
+                </div>
+                <div class="item">
+                    {{ 'sylius_invoicing_plugin.ui.issued_from'|trans }}
+                    <span class="ui large empty horizontal circular label"></span> <strong id="invoice-channel-name">{{ invoice.channel.name }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</h1>

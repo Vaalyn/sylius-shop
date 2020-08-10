@@ -1,0 +1,21 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% import '@SyliusUi/Macro/messages.html.twig' as messages %}
+
+{% block content %}
+    <div id="bitbag-faqs" class="ui sixteen wide column stackable grid">
+        {% if resources|length > 0 %}
+            {% for frequentlyAskedQuestion in resources %}
+                <div class="row">
+                    <div class="ui one column padded segment">
+                        <div class="bitbag-frequently-asked-question">
+                            {% include '@BitBagSyliusCmsPlugin/Shop/FrequentlyAskedQuestion/Index/_show.html.twig' %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            {{ messages.info('sylius.ui.no_results_to_display') }}
+        {% endif %}
+    </div>
+{% endblock %}

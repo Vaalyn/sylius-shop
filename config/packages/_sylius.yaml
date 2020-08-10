@@ -10,8 +10,15 @@ imports:
 
     - { resource: "@BitBagSyliusCmsPlugin/Resources/config/config.yml" }
 
+    - { resource: "@BitBagSyliusMolliePlugin/Resources/config/config.yaml" }
+
+    - { resource: "@BitBagSyliusProductBundlePlugin/Resources/config/config.yml" }
+
+    - { resource: "@VaaCharSyliusShippingInformationPagePlugin/Resources/config/config.yml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
+    images_dir: '/media/image/'
 
 sylius_addressing:
     resources:
@@ -153,6 +160,7 @@ sylius_product:
         product_variant:
             classes:
                 model: App\Entity\Product\ProductVariant
+                repository: App\Repository\ProductVariantRepository
             translation:
                 classes:
                     model: App\Entity\Product\ProductVariantTranslation
@@ -251,9 +259,17 @@ sylius_shop:
     product_grid:
         include_all_descendants: true
 
-sylius_theme:
-    sources:
-        filesystem:
-            scan_depth: 1
-            directories:
-                - "%kernel.project_dir%/themes"
+sylius_ui:
+    events:
+        sylius.shop.layout.topbar:
+            blocks:
+                search_widget:
+                    template: "@MonsieurBizSyliusSearchPlugin/Topbar/_searchWidget.html.twig"
+                    priority: 17
+
+setono_sylius_terms:
+    resources:
+        terms:
+            classes:
+                model: App\Entity\Terms\Terms
+                repository: App\Repository\TermsRepository

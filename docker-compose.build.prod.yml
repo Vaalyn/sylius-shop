@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+    php:
+        build:
+            context: .
+            target: sylius_php
+
+    enqueue_consumer:
+        build:
+            context: .
+            target: sylius_php
+
+    nodejs:
+        image: vaachar/sylius_nodejs:latest
+        build:
+            context: .
+            target: sylius_nodejs
+        depends_on:
+            - php
+        environment:
+            - PHP_HOST=php
+            - PHP_PORT=9000
+        volumes:
+            - .:/srv/sylius:rw,cached
+        ports:
+            - "35729:35729"
+
+    nginx:
+        build:
+            context: .
+            target: sylius_nginx
+        depends_on:
+            - php
+            - nodejs
+
+    elasticsearch:
+        build:
+            context: .
+            target: sylius_elasticsearch

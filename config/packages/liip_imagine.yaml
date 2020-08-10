@@ -1,6 +1,131 @@
 liip_imagine:
+    enqueue: true
+
+    default_filter_set_settings:
+        format: jpeg
+
     resolvers:
         default:
             web_path:
                 web_root: "%kernel.project_dir%/public"
                 cache_prefix: "media/cache"
+
+    filter_sets:
+        sylius_small:
+            filters:
+                thumbnail: { size: [375, 250], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_medium:
+            filters:
+                thumbnail: { size: [750, 500], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_large:
+            filters:
+                thumbnail: { size: [1500, 1000], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_admin_product_original: ~
+
+        sylius_admin_admin_user_avatar_thumbnail:
+            filters:
+                thumbnail: { size: [150, 150], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_admin_product_tiny_thumbnail:
+            filters:
+                thumbnail: { size: [200, 150], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_admin_product_thumbnail:
+            filters:
+                thumbnail: { size: [750, 500], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_admin_product_small_thumbnail:
+            filters:
+                thumbnail: { size: [375, 250], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_admin_product_large_thumbnail:
+            filters:
+                thumbnail: { size: [1500, 1000], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_shop_product_original:
+            filters:
+                downscale: { max: [3000, 2000] }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_shop_product_tiny_thumbnail:
+            filters:
+                thumbnail: { size: [200, 150], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_shop_product_small_thumbnail:
+            filters:
+                thumbnail: { size: [375, 250], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_shop_product_thumbnail:
+            filters:
+                thumbnail: { size: [750, 500], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        sylius_shop_product_large_thumbnail:
+            filters:
+                thumbnail: { size: [1500, 1000], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }

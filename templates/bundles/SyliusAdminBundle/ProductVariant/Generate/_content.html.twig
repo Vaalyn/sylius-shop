@@ -1,0 +1,65 @@
+{% form_theme form '@SyliusAdmin/Form/customTheme.html.twig' %}
+
+{{ form_start(form, {'action': path('sylius_admin_product_variant_generate', {'productId': product.id}), 'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }}
+<div id="vaachar-helper-tools" class="ui segment">
+    <h4 class="ui dividing header">{{ 'vaachar.helper_tools.header'|trans }}</h4>
+
+    <div class="ui stackable doubling two column grid">
+        <div class="row">
+            <div class="column">
+                <div class="ui fluid labeled action input field">
+                    <div class="ui label">{{ 'vaachar.helper_tools.price'|trans }}</div>
+                    <input type="text" id="vaachar-variant-prices-default">
+                    <button id="vaachar-set-all-variant-prices-default" class="ui labeled icon primary button" type="button">
+                        <i class="check icon"></i>{{ 'vaachar.helper_tools.apply'|trans }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="ui fluid labeled action input field">
+                    <div class="ui label">{{ 'vaachar.helper_tools.original_price'|trans }}</div>
+                    <input type="text" id="vaachar-variant-original-prices-default">
+                    <button id="vaachar-set-all-variant-original-prices-default" class="ui labeled icon primary button" type="button">
+                        <i class="check icon"></i>{{ 'vaachar.helper_tools.apply'|trans }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <div class="ui fluid labeled action input field">
+                    <div class="ui label">{{ 'vaachar.helper_tools.code_prefix'|trans }}</div>
+                    <input type="text" id="vaachar-variant-code-prefix" value="{{ product.code }}_">
+                    <button id="vaachar-set-all-variant-code-prefix" class="ui labeled icon primary button" type="button">
+                        <i class="check icon"></i>{{ 'vaachar.helper_tools.apply'|trans }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                {{ form_row(form.shippingCategoryHelper) }}
+            </div>
+
+            <div class="column">
+                {{ form_row(form.taxCategoryHelper) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui segment">
+    {% include '@SyliusAdmin/ProductVariant/Generate/_form.html.twig' %}
+    <div class="ui basic segment">
+        <div class="ui buttons">
+            <button class="ui labeled icon primary button" type="submit" {% if form.variants.children is empty %}disabled{% endif %}><i class="random icon"></i>{{- 'sylius.ui.generate'|trans -}}</button>
+            {% include '@SyliusUi/Form/Buttons/_cancel.html.twig' with {'path': path(configuration.getRouteName('index'), {'productId': product.id})} %}
+        </div>
+    </div>
+    {{ sylius_template_event('sylius.admin.product_variant.generate.form', {'resource': resource}) }}
+</div>
+{{ form_row(form._token) }}
+{{ form_end(form, {'render_rest': false}) }}

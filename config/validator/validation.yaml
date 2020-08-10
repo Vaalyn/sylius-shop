@@ -1,0 +1,6 @@
+Sylius\Component\Core\Model\ProductImage:
+    properties:
+        file:
+            - Image:
+                maxSize: "32M"
+                groups: ["app_product"]

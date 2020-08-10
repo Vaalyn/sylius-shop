@@ -1,0 +1,20 @@
+body .ui.inverted.segment {
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.03);
+    border: 1px solid rgba(34, 36, 38, 0.1);
+    color: rgba(0, 0, 0, 0.87);
+}
+
+body .ui.inverted.table,
+body .ui.inverted.table thead th,
+body .ui.inverted.table tbody td {
+    border-color: rgba(34, 36, 38, 0.1) !important;
+    color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.ui.table th .image,
+.ui.table th .image img,
+.ui.table td .image,
+.ui.table td .image img {
+    max-width: 50px !important;
+}

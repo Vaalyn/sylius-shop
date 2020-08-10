@@ -1,3 +1,135 @@
 sylius:
     ui:
+        about: 'Über uns'
         your_store: 'VaaChar'
+        items_total: 'Summe der Artikel'
+        taxes_total: 'Steuern Gesamt'
+        shipping_estimated_cost: 'Geschätzte Versandkosten'
+        discount: 'Rabatt'
+        view_order: 'Bestellung ansehen'
+        create_an_account: 'Account erstellen'
+        if_you_have_an_account_sign_in_with_your_email_address: 'Wenn Sie bereits einen Account besitzen, melden Sie sich bitte mit Ihrer E-Mail Adresse an'
+        verify: 'Verifizieren'
+        promotion_total: 'Rabatt gesamt'
+        ready: 'In Bearbeitung'
+        resend_the_order_confirmation_email: 'Auftragsbestätigung erneut versenden'
+        resend_the_shipment_confirmation_email: 'Versandbestätigung erneut versenden'
+        edit_addresses: 'Adressen bearbeiten'
+        refunds: 'Rückerstattungen'
+        fulfill: 'Zu erfüllen'
+        fulfilled: 'Erfüllt'
+        original_payment_method: 'Ursprüngliche Zahlungsmethode'
+        channel: 'Ausgabekanal'
+        partially_refunded: 'Teilweise rückerstattet'
+        manage_your_personal_information_and_preferences: 'Verwalten Sie Ihre persönlichen Informationen und Einstellungen.'
+        privacy_policy: 'Datenschutzerklärung'
+        terms_and_conditions: 'Allgemeine Geschäftsbedingungen'
+        contact: 'Kontakt'
+
+    form:
+        country:
+            select: 'Land auswählen'
+        customer:
+            different_shipping_address: 'Abweichende Versandadresse benutzen?'
+        checkout:
+            addressing:
+                different_billing_address: 'Abweichende Rechnungsadresse benutzen?'
+                different_shipping_address: 'Abweichende Versandadresse benutzen?'
+        shipping_calculator:
+            flat_rate_configuration:
+                amount: Summe
+            per_unit_rate_configuration:
+                amount: Summe
+
+    gender:
+        unknown: Keine Angabe
+
+    email:
+        contact_request:
+            content: 'Inhalt'
+            message_from: 'Nachricht von'
+            subject: 'Kontaktanfrage'
+        order_confirmation:
+            has_been_successfully_placed: 'wurde erfolgreich aufgegeben.'
+            subject: 'Bestellbestätigung'
+            view_order_or_change_payment_method: 'Bestellung ansehen oder Zahlungsmethode ändern'
+            thank_you: 'Vielen Dank für Ihren Einkauf in unserem Shop!'
+            your_order_number: 'Ihre Bestell-Nr.'
+        password_reset:
+            hello: 'Hallo'
+            reset_your_password: 'Ihr Passwort zurücksetzen'
+            subject: 'Passwort zurücksetzen'
+            to_reset_your_password: 'Um Ihr Passwort zurückzusetzen - klicken Sie auf den Link unten'
+        shipment_confirmation:
+            has_been_sent_using: 'wurde mit folgendem Versandanbieter verschickt:'
+            subject: 'Versandbestätigung'
+            thank_you_for_transaction: 'Vielen Dank für Ihren Einkauf in unserem Shop!'
+            tracking_code: 'verfolgen.'
+            you_can_check_its_location: 'Sie können den Status Ihres Pakets mit der Sendungsnummer '
+            your_order_with_number: 'Ihre Bestellung mit der Nummer'
+        user_registration:
+            start_shopping: 'Mit dem Einkaufen beginnen'
+            subject: 'Benutzerregistrierung'
+            welcome_to_our_store: 'Willkommen in unserem Shop!'
+            you_have_just_been_registered: 'Sie haben sich gerade registriert. Vielen Dank.'
+        verification_token:
+            hello: 'Hallo'
+            subject: 'Überprüfung der E-Mail-Adresse'
+            to_verify_your_email_address: 'Um Ihre E-Mail-Adresse zu verifizieren - klicken Sie auf den untenstehenden Link'
+            verify_your_email_address: 'Bestätigen Sie Ihre E-Mail-Adresse'
+
+setono_sylius_terms:
+    form:
+        terms_accept:
+            label: 'Akzeptieren Sie die folgenden Bedingungen, um Ihre Bestellung fertigzustellen'
+
+vaachar:
+    tax_rate:
+        inluded_in_price: 'inkl.'
+        excluded_from_price: 'zzgl.'
+        german_small_business: Kein Mehrwertsteuerausweis, da Kleinunternehmer nach §19 (1) UStG.
+        vat: 'MwSt.'
+    helper_tools:
+        apply: 'Anwenden'
+        code_prefix: 'Code Prefix'
+        header: 'Hilfs-Tools'
+        original_price: 'Ursprünglicher Preis'
+        price: 'Preis'
+
+sylius_invoicing_plugin:
+    email:
+        subject: 'Ihre Rechnung zu der Bestellung #%orderNumber% von %channelName%'
+        body:
+            attachment: 'anbei erhalten Sie die Rechnung zu Ihrer Bestellung #%orderNumber%.'
+            greetings: 'Mit freundlichen Grüßen'
+            hello: 'Guten Tag,'
+            thank_you: 'Danke für Ihre Bestellung!'
+            your_team: 'Ihr Team von %channelName%'
+
+sylius_refund:
+    ui:
+        credit_memo: Gutschrift
+        credit_memos: Gutschriften
+        refund: Rückerstatten
+        refunds: Rückerstattungen
+        refunded: Zurückerstattet
+        refund_value: Rückerstattung Summe
+        refunded_total: Rückerstattungen Summe
+        refund_payments: Rückerstattungszahlungen
+        clear_refunds: Alle leeren
+        refund_all: Alle zurückerstatten
+        issued_at: Ausgestellt am
+        issued_for_order: Ausgestellt für Bestellung
+        issued_from: Ausgestellt von
+        from: Von
+
+bitbag_sylius_product_bundle:
+    ui:
+        bundle: Produktpaket
+
+monsieurbiz_searchplugin:
+    admin:
+        product_option:
+            form:
+                title: Suche
+                filterable: Filterbar

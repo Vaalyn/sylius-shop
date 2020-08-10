@@ -1,0 +1,32 @@
+sylius:
+    gender:
+        unknown: Not specified
+
+    ui:
+        about: 'About us'
+        ready: 'Processing'
+        contact: 'Contact'
+        your_store: 'VaaChar'
+
+vaachar:
+    tax_rate:
+        inluded_in_price: 'incl.'
+        excluded_from_price: 'plus'
+        german_small_business: No value-added tax is included, as small businesses are subject to §19 (1) UStG.
+        vat: 'VAT'
+    helper_tools:
+        apply: 'Apply'
+        code_prefix: 'Code Prefix'
+        header: 'Helper Tools'
+        original_price: 'Original Price'
+        price: 'Price'
+
+sylius_invoicing_plugin:
+    email:
+        subject: 'Your invoice for your order #%orderNumber% from %channelName%'
+        body:
+            attachment: 'You can find the invoice PDF to your order in this emails attachments.'
+            greetings: 'Greetings'
+            hello: 'Hello,'
+            thank_you: 'Thank you for your purchase!'
+            your_team: 'Your %channelName% team'
