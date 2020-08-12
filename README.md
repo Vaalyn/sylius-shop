@@ -1,7 +1,7 @@
 
 <h1 align="center">Sylius Shop</h1>
 
-<p align="center">This is a Shop built on the [**Sylius Standard Edition**](https://github.com/Sylius/Sylius-Standard) repository including the following plugins:</p>
+This is a Shop built on the [**Sylius Standard Edition**](https://github.com/Sylius/Sylius-Standard) repository and includes the following plugins:
 
 - [**bitbag/cms-plugin**](https://github.com/BitBagCommerce/SyliusCmsPlugin)
 - [**bitbag/mollie-plugin**](https://github.com/BitBagCommerce/SyliusMolliePlugin)
