@@ -13,3 +13,7 @@ import '../../vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/Resources/privat
 
 import '../../vendor/sylius/sylius/src/Sylius/Bundle/UiBundle/Resources/private/img/logo.png';
 import '../../vendor/sylius/sylius/src/Sylius/Bundle/UiBundle/Resources/private/img/avatar.png';
+
+import './image/homepage-banner.jpg';
+import './image/logo.png';
+import './image/sylius-plus-banner.png';
