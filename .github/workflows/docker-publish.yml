@@ -17,6 +17,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Fetch VaaChar theme from GitHub Repository
+        run: git clone https://github.com/Vaalyn/sylius-shop-vaachar-theme.git ./themes/VaaCharTheme
 
       - name: Build images
         run: |
