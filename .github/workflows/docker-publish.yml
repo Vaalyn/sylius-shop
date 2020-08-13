@@ -1,0 +1,55 @@
+name: Docker
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build images
+        run: |
+            # Strip git ref prefix from version
+            VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+            # Strip "v" prefix from tag name
+            [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+            # Use Docker `latest` tag convention
+            [ "$VERSION" == "master" ] && VERSION=latest
+
+            echo VERSION=$VERSION
+
+            docker-compose -f docker-compose.yml -f docker-compose.build.prod.yml build --build-arg TAG_VERSION=$VERSION
+
+      - name: Log into registry
+        run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+
+      - name: Push images
+        run: |
+          # Strip git ref prefix from version
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+          # Use Docker `latest` tag convention
+          [ "$VERSION" == "master" ] && VERSION=latest
+
+          echo VERSION=$VERSION
+
+          docker push vaachar/sylius_php:$VERSION
+          docker push vaachar/sylius_nginx:$VERSION
+          docker push vaachar/sylius_elasticsearch:$VERSION
+          docker push vaachar/sylius_php:$VERSION
