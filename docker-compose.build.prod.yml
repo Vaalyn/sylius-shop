@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
     php:
+        image: vaachar/sylius_php:${TAG_VERSION}
         build:
             context: .
             target: sylius_php
@@ -12,7 +13,7 @@ services:
             target: sylius_php
 
     nodejs:
-        image: vaachar/sylius_nodejs:latest
+        image: vaachar/sylius_nodejs:${TAG_VERSION}
         build:
             context: .
             target: sylius_nodejs
@@ -27,6 +28,7 @@ services:
             - "35729:35729"
 
     nginx:
+        image: vaachar/sylius_nginx:${TAG_VERSION}
         build:
             context: .
             target: sylius_nginx
@@ -35,6 +37,7 @@ services:
             - nodejs
 
     elasticsearch:
+        image: vaachar/sylius_elasticsearch:${TAG_VERSION}
         build:
             context: .
             target: sylius_elasticsearch
