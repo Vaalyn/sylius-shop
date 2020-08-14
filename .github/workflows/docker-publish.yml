@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Fetch VaaChar theme from GitHub Repository
         run: git clone https://github.com/Vaalyn/sylius-shop-vaachar-theme.git ./themes/VaaCharTheme
 
@@ -34,25 +34,15 @@ jobs:
 
             echo VERSION=$VERSION
 
-            docker-compose -f docker-compose.yml -f docker-compose.build.prod.yml build --build-arg TAG_VERSION=$VERSION
+            export TAG_VERSION=$VERSION
+
+            docker-compose -f docker-compose.yml -f docker-compose.build.prod.yml build
 
       - name: Log into registry
         run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
 
       - name: Push images
         run: |
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
-          # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
-
-          echo VERSION=$VERSION
-
-          docker push vaachar/sylius_php:$VERSION
-          docker push vaachar/sylius_nginx:$VERSION
-          docker push vaachar/sylius_elasticsearch:$VERSION
-          docker push vaachar/sylius_php:$VERSION
+          docker push vaachar/sylius_php:$TAG_VERSION
+          docker push vaachar/sylius_nginx:$TAG_VERSION
+          docker push vaachar/sylius_elasticsearch:$TAG_VERSION
