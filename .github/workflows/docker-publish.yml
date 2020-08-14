@@ -43,6 +43,19 @@ jobs:
 
       - name: Push images
         run: |
-          docker push vaachar/sylius_php:$TAG_VERSION
-          docker push vaachar/sylius_nginx:$TAG_VERSION
-          docker push vaachar/sylius_elasticsearch:$TAG_VERSION
+            # Strip git ref prefix from version
+            VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+            # Strip "v" prefix from tag name
+            [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+            # Use Docker `latest` tag convention
+            [ "$VERSION" == "master" ] && VERSION=latest
+
+            echo VERSION=$VERSION
+
+            export TAG_VERSION=$VERSION
+
+            docker push vaachar/sylius_php:$TAG_VERSION
+            docker push vaachar/sylius_nginx:$TAG_VERSION
+            docker push vaachar/sylius_elasticsearch:$TAG_VERSION
