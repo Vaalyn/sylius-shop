@@ -7,9 +7,9 @@ if [ "${1#-}" != "$1" ]; then
 fi
 
 if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
-    mkdir -p var/cache var/log public/media
-    chown -R www-data:www-data var/cache var/log public/media
-    chmod -R a+rw public/media
+    mkdir -p var/cache var/log public/media public/media/image
+    chown -R www-data:www-data var public/media
+    chmod -R a+rw var public/media
 
     if [ "$APP_ENV" != 'prod' ] && [ "$ENQUEUE_CONSUMER" != 'true' ]; then
         composer install --prefer-dist --no-progress --no-suggest --no-interaction
