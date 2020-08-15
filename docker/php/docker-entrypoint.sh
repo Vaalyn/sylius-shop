@@ -27,6 +27,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
     fi
 
     bin/console cache:clear --env=$APP_ENV
+    chown -R www-data:www-data var
 fi
 
 exec docker-php-entrypoint "$@"
