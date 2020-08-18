@@ -127,6 +127,23 @@ bitbag_sylius_product_bundle:
     ui:
         bundle: Produktpaket
 
+mango_sylius:
+    orderMessage:
+        title: 'Bestellung kommentieren'
+        sendMail: 'An Kunden senden'
+        subject: 'Nachricht bezüglich Ihrer Bestellung Nr. %orderNumber%'
+        success:
+            mail: 'Die Nachricht an den Kunden wurde verschickt.'
+            note: 'Die Nachricht wurde gespeichert'
+        error: 'Die Nachricht, die Sie zu senden versucht haben, hat keinen Inhalt'
+        time: 'Um'
+        sender: 'Von:'
+        message: 'Nachricht:'
+        note: 'Notiz:'
+        sent: 'An Kunden gesendet'
+        save: 'Speichern'
+
+
 monsieurbiz_searchplugin:
     admin:
         product_option:

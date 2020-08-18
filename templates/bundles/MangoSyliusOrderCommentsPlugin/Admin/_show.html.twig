@@ -1,0 +1,38 @@
+{% if messages %}
+    <div id='orderMessage' class="ui segment">
+        <div class="ui comments">
+            {% for message in messages %}
+                <div class="comment">
+                    {% if message.sender.avatar is not empty and message.sender.avatar.path is not empty %}
+                        {% set avatarPath = message.sender.avatar.path|imagine_filter('sylius_admin_admin_user_avatar_thumbnail') %}
+                    {% else %}
+                        {% set avatarPath = '//placehold.it/50x50' %}
+                    {% endif %}
+                    <a class="avatar">
+                        <img src="{{ avatarPath }}" aria-hidden="true">
+                    </a>
+
+                    <div class="content">
+                        <span class="author">{{ message.sender.username }}</span>
+
+                        <div class="metadata">
+                            <span class="date">{{ message.sendTime|date }}</span>
+
+                            {% if message.sendMail %}
+                                <span data-tooltip="{{ 'mango_sylius.orderMessage.sent'|trans }}" data-position="top center">
+                                    <i class="envelope outline icon" aria-label="{{ 'mango_sylius.orderMessage.sent'|trans }}"></i>
+                                </span>
+                            {% endif %}
+                        </div>
+
+                        <br/><br/>
+
+                        <div class="text">
+                            {{ message.message }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

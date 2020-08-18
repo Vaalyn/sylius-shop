@@ -16,6 +16,8 @@ imports:
 
     - { resource: "@VaaCharSyliusShippingInformationPagePlugin/Resources/config/config.yml" }
 
+    - { resource: "@MangoSyliusOrderCommentsPlugin/Resources/config/config.yml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
     images_dir: '/media/image/'

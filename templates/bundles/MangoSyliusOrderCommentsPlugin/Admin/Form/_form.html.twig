@@ -1,0 +1,18 @@
+<h4 class="ui dividing header">{{ 'mango_sylius.orderMessage.title'|trans }}</h4>
+<div class="ui form">
+    {{ form_start(form) }}
+
+    <div class="one field">
+        {{ form_widget(form.message) }}
+    </div>
+
+    <div class="one field">
+        <div class="ui toggle checkbox">
+            {{ form_widget(form.sendMail) }}
+            {{ form_label(form.sendMail) }}
+        </div>
+    </div>
+
+    {{ form_row(form.save, { 'attr': {'class': 'large ui primary button'}}) }}
+    {{ form_end(form) }}
+</div>

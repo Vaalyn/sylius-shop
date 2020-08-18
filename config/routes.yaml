@@ -12,3 +12,7 @@ vaachar_sylius_shipping_information_page_plugin:
 
 monsieurbiz_search_plugin:
     resource: "@MonsieurBizSyliusSearchPlugin/Resources/config/routing.yaml"
+
+mango_sylius_order_comments_plugin:
+    resource: "@MangoSyliusOrderCommentsPlugin/Resources/config/routing.yml"
+    prefix: /admin
