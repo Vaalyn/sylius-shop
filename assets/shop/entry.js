@@ -4,6 +4,7 @@ import '../../vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/Resources/privat
 
 import 'semantic-ui-css/semantic.css';
 import 'lightbox2/dist/css/lightbox.min.css';
+import 'slick-carousel/slick/slick.css';
 
 import '../../vendor/sylius/sylius/src/Sylius/Bundle/UiBundle/Resources/private/js/app.js';
 import '../../vendor/sylius/sylius/src/Sylius/Bundle/ShopBundle/Resources/private/js/app.js';
