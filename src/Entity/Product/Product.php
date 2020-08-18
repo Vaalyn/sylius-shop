@@ -7,6 +7,8 @@ namespace App\Entity\Product;
 use BitBag\SyliusProductBundlePlugin\Entity\ProductBundlesAwareInterface;
 use BitBag\SyliusProductBundlePlugin\Entity\ProductBundlesAwareTrait;
 use Doctrine\ORM\Mapping as ORM;
+use JoppeDc\SyliusBetterSeoPlugin\Entity\HasSeoInterface;
+use JoppeDc\SyliusBetterSeoPlugin\Entity\Traits\SeoTrait;
 use MonsieurBiz\SyliusSearchPlugin\Model\Document\Result;
 use MonsieurBiz\SyliusSearchPlugin\Model\Documentable\DocumentableInterface;
 use MonsieurBiz\SyliusSearchPlugin\Model\Documentable\DocumentableProductTrait;
@@ -17,13 +19,14 @@ use Sylius\Component\Product\Model\ProductTranslationInterface;
  * @ORM\Entity
  * @ORM\Table(name="sylius_product")
  */
-class Product extends BaseProduct implements ProductBundlesAwareInterface, DocumentableInterface
+class Product extends BaseProduct implements ProductBundlesAwareInterface, DocumentableInterface, HasSeoInterface
 {
     use ProductBundlesAwareTrait;
     use DocumentableProductTrait;
     use DocumentableProductTrait {
         convertToDocument as protected traitConvertToDocument;
     }
+    use SeoTrait;
 
     /**
      * @ORM\OneToOne(targetEntity="BitBag\SyliusProductBundlePlugin\Entity\ProductBundleInterface", mappedBy="product", cascade={"persist"})

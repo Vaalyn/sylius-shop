@@ -70,4 +70,5 @@ return [
     BitBag\SyliusMolliePlugin\BitBagSyliusMolliePlugin::class => ['all' => true],
     MonsieurBiz\SyliusSearchPlugin\MonsieurBizSyliusSearchPlugin::class => ['all' => true],
     MangoSylius\OrderCommentsPlugin\MangoSyliusOrderCommentsPlugin::class => ['all' => true],
+    JoppeDc\SyliusBetterSeoPlugin\SyliusBetterSeoPlugin::class => ['all' => true],
 ];

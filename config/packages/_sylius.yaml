@@ -18,6 +18,8 @@ imports:
 
     - { resource: "@MangoSyliusOrderCommentsPlugin/Resources/config/config.yml" }
 
+    - { resource: "@SyliusBetterSeoPlugin/Resources/config/config.yaml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
     images_dir: '/media/image/'

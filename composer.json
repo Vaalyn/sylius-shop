@@ -20,6 +20,7 @@
         "enqueue/fs": "^0.10.1",
         "h4cc/wkhtmltoimage-amd64": "^0.12.4",
         "h4cc/wkhtmltopdf-amd64": "^0.12.4",
+        "joppedc/sylius-better-seo-plugin": "^1.0",
         "mangoweb-sylius/sylius-order-comments-plugin": "dev-change-message-to-text-type",
         "maxmind-db/reader": "^1.6",
         "monsieurbiz/sylius-search-plugin": "^0.2.0",

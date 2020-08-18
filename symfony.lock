@@ -276,6 +276,9 @@
     "jolicode/elastically": {
         "version": "v1.0.1"
     },
+    "joppedc/sylius-better-seo-plugin": {
+        "version": "v1.0.2"
+    },
     "knplabs/gaufrette": {
         "version": "v0.6.0"
     },
