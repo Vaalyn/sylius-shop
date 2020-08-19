@@ -20,6 +20,8 @@ imports:
 
     - { resource: "@SyliusBetterSeoPlugin/Resources/config/config.yaml" }
 
+    - { resource: "@OdiseoSyliusBannerPlugin/Resources/config/config.yaml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
     images_dir: '/media/image/'

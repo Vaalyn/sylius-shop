@@ -7,7 +7,7 @@ if [ "${1#-}" != "$1" ]; then
 fi
 
 if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
-    mkdir -p var/cache var/log public/media public/media/image
+    mkdir -p var/cache var/log public/media public/media/image public/media/banner-image
     chown -R www-data:www-data var public/media
     chmod -R a+rw var public/media
 

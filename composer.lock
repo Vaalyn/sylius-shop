@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15e739aa385819a5dae8d533cac72295",
+    "content-hash": "18ae0ec86bda4574e2e1c96ca9db7f21",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5315,6 +5315,69 @@
                 "service proxies"
             ],
             "time": "2019-08-10T08:37:15+00:00"
+        },
+        {
+            "name": "odiseoteam/sylius-banner-plugin",
+            "version": "v1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/odiseoteam/SyliusBannerPlugin.git",
+                "reference": "8587c1629c3bc21edd0bde8a1951665136b93534"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/odiseoteam/SyliusBannerPlugin/zipball/8587c1629c3bc21edd0bde8a1951665136b93534",
+                "reference": "8587c1629c3bc21edd0bde8a1951665136b93534",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "sylius/sylius": "^1.3",
+                "vich/uploader-bundle": "^1.6"
+            },
+            "require-dev": {
+                "behat/behat": "^3.4",
+                "behat/mink": "^1.7@dev",
+                "behat/mink-browserkit-driver": "^1.3",
+                "behat/mink-extension": "^2.2",
+                "behat/mink-selenium2-driver": "^1.3",
+                "friends-of-behat/page-object-extension": "^0.3",
+                "friends-of-behat/suite-settings-extension": "^1.0",
+                "friends-of-behat/symfony-extension": "^2.0",
+                "friends-of-behat/variadic-extension": "^1.1",
+                "lakion/mink-debug-extension": "^1.2.3",
+                "phpspec/phpspec": "^5.0",
+                "phpstan/phpstan-doctrine": "^0.11",
+                "phpstan/phpstan-shim": "^0.11",
+                "phpstan/phpstan-webmozart-assert": "^0.11",
+                "phpunit/phpunit": "^8.0",
+                "sensiolabs/security-checker": "^5.0",
+                "sylius-labs/coding-standard": "^3.0",
+                "symfony/browser-kit": "^3.4|^4.3",
+                "symfony/debug-bundle": "^3.4|^4.3",
+                "symfony/dotenv": "^4.3",
+                "symfony/intl": "^3.4|^4.3",
+                "symfony/web-profiler-bundle": "^3.4|^4.3",
+                "symfony/web-server-bundle": "^3.4|^4.3"
+            },
+            "type": "sylius-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Odiseo\\SyliusBannerPlugin\\": "src/",
+                    "Tests\\Odiseo\\SyliusBannerPlugin\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "This plugin add banners to your Sylius project",
+            "keywords": [
+                "sylius",
+                "sylius-banner",
+                "sylius-plugin"
+            ],
+            "time": "2020-05-04T23:37:04+00:00"
         },
         {
             "name": "oneup/flysystem-bundle",
@@ -12681,6 +12744,99 @@
                 "issues": "https://github.com/Vaalyn/sylius-shipping-information-page-plugin/issues"
             },
             "time": "2020-07-31T01:55:19+00:00"
+        },
+        {
+            "name": "vich/uploader-bundle",
+            "version": "1.8.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dustin10/VichUploaderBundle.git",
+                "reference": "759bf0e6d8ceb4bcfb066da9b2789ab3dfea0d9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/759bf0e6d8ceb4bcfb066da9b2789ab3dfea0d9c",
+                "reference": "759bf0e6d8ceb4bcfb066da9b2789ab3dfea0d9c",
+                "shasum": ""
+            },
+            "require": {
+                "behat/transliterator": "^1.2",
+                "jms/metadata": "^1.6",
+                "php": "^7.1",
+                "symfony/config": "^3.4|^4.0",
+                "symfony/dependency-injection": "^3.4|^4.0",
+                "symfony/event-dispatcher": "^3.4|^4.0",
+                "symfony/form": "^3.4|^4.0",
+                "symfony/http-foundation": "^3.4|^4.0",
+                "symfony/http-kernel": "^3.4|^4.0",
+                "symfony/property-access": "^3.4|^4.0",
+                "symfony/templating": "^3.4|^4.0"
+            },
+            "require-dev": {
+                "alcaeus/mongo-php-adapter": "^1.1",
+                "doctrine/doctrine-bundle": "^1.8",
+                "doctrine/mongodb-odm": "^1.2",
+                "doctrine/orm": "^2.5",
+                "ext-sqlite3": "*",
+                "knplabs/knp-gaufrette-bundle": "^0.5",
+                "matthiasnoback/symfony-dependency-injection-test": "^2.3|^3.0",
+                "mikey179/vfsstream": "^1.6",
+                "oneup/flysystem-bundle": "^3.0",
+                "phpunit/phpunit": "^6.5|^7.0",
+                "symfony/browser-kit": "^3.4|^4.0",
+                "symfony/css-selector": "^3.4|^4.0",
+                "symfony/doctrine-bridge": "^3.4|^4.0",
+                "symfony/dom-crawler": "^3.4|^4.0",
+                "symfony/framework-bundle": "^3.4|^4.0",
+                "symfony/phpunit-bridge": "^3.3",
+                "symfony/security-csrf": "^3.4|^4.0",
+                "symfony/translation": "^3.4|^4.0",
+                "symfony/twig-bridge": "^3.4|^4.0",
+                "symfony/twig-bundle": "^3.4|^4.0",
+                "symfony/validator": "^3.4|^4.0",
+                "symfony/var-dumper": "^3.4|^4.0",
+                "symfony/yaml": "^3.4|^4.0"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "For integration with Doctrine",
+                "doctrine/mongodb-odm-bundle": "For integration with Doctrine ODM",
+                "doctrine/orm": "For integration with Doctrine ORM",
+                "doctrine/phpcr-odm": "For integration with Doctrine PHPCR",
+                "knplabs/knp-gaufrette-bundle": "For integration with Gaufrette",
+                "liip/imagine-bundle": "To generate image thumbnails",
+                "ocramius/proxy-manager": "To use lazy services",
+                "oneup/flysystem-bundle": "For integration with Flysystem",
+                "symfony/yaml": "To use YAML mapping",
+                "willdurand/propel-eventdispatcher-bundle": "For integration with Propel"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vich\\UploaderBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dustin Dobervich",
+                    "email": "ddobervich@gmail.com"
+                }
+            ],
+            "description": "Ease file uploads attached to entities",
+            "homepage": "https://github.com/dustin10/VichUploaderBundle",
+            "keywords": [
+                "file uploads",
+                "upload"
+            ],
+            "time": "2019-04-28T17:16:03+00:00"
         },
         {
             "name": "webmozart/assert",
