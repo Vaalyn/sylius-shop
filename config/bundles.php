@@ -71,4 +71,9 @@ return [
     MonsieurBiz\SyliusSearchPlugin\MonsieurBizSyliusSearchPlugin::class => ['all' => true],
     MangoSylius\OrderCommentsPlugin\MangoSyliusOrderCommentsPlugin::class => ['all' => true],
     JoppeDc\SyliusBetterSeoPlugin\SyliusBetterSeoPlugin::class => ['all' => true],
+    Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
+    Artgris\Bundle\FileManagerBundle\ArtgrisFileManagerBundle::class => ['all' => true],
+    Gregwar\ImageBundle\GregwarImageBundle::class => ['all' => true],
+    Artgris\Bundle\MediaBundle\ArtgrisMediaBundle::class => ['all' => true],
+    Aropixel\SyliusAdminMediaPlugin\AropixelSyliusAdminMediaPlugin::class => ['all' => true],
 ];

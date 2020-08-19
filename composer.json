@@ -13,6 +13,7 @@
     ],
     "require": {
         "php": "^7.3",
+        "aropixel/sylius-admin-media-plugin": "^0.2.4",
         "bitbag/cms-plugin": "^2.3",
         "bitbag/mollie-plugin": "^3.2.6",
         "bitbag/product-bundle-plugin": "^1.0",

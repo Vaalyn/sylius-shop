@@ -20,6 +20,8 @@ imports:
 
     - { resource: "@SyliusBetterSeoPlugin/Resources/config/config.yaml" }
 
+    - { resource: "@AropixelSyliusAdminMediaPlugin/Resources/config/app/config.yml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
     images_dir: '/media/image/'
