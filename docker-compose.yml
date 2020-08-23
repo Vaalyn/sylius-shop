@@ -18,6 +18,7 @@ services:
             - ./.env:/srv/sylius/.env:ro
             - ./var:/srv/sylius/var:rw,delegated
             - ./public/media:/srv/sylius/public/media:rw,delegated
+            - ./themes:/srv/sylius/themes:rw,delegated
 
     enqueue_consumer:
         image: vaachar/sylius_php:latest
@@ -38,6 +39,7 @@ services:
             - ./.env:/srv/sylius/.env:ro
             - ./var:/srv/sylius/var:rw,delegated
             - ./public/media:/srv/sylius/public/media:rw,delegated
+            - ./themes:/srv/sylius/themes:rw,delegated
         command: ["bin/console", "enqueue:consume", "--setup-broker", "-vvv"]
 
     mysql:
