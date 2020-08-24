@@ -23,6 +23,14 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
         bin/console sylius:theme:assets:install public --no-interaction
     fi
 
+    if [ "$CUSTOM_OVERRIDE" == 'true' ]; then
+        composer install --prefer-dist --no-autoloader --no-scripts --no-progress --no-suggest
+        composer dump-autoload --classmap-authoritative
+        composer run-script post-install-cmd
+        bin/console sylius:install:assets
+        bin/console sylius:theme:assets:install public
+    fi
+
     until bin/console doctrine:query:sql "select 1" >/dev/null 2>&1; do
         (>&2 echo "Waiting for MySQL to be ready...")
         sleep 1
