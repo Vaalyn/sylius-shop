@@ -46,6 +46,13 @@ adminConfig.name = 'admin';
 
 Encore.reset();
 
-const vaaCharThemeConfig = require('./themes/VaaCharTheme/webpack.config');
+// Generate code for when custom templates are added
+{{ if exists "./themes/themes.webpack.config.js" }}
+    const customThemesConfig = require('./themes/themes.webpack.config');
+{{ end }}
 
-module.exports = [shopConfig, adminConfig, vaaCharThemeConfig];
+{{ if exists "./themes/themes.webpack.config.js" }}
+    module.exports = [shopConfig, adminConfig, ...customThemesConfig];
+{{ else }}
+    module.exports = [shopConfig, adminConfig];
+{{ end }}

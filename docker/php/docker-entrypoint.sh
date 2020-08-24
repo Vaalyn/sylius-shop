@@ -11,10 +11,24 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
     chown -R www-data:www-data var public/media
     chmod -R a+rw var public/media
 
+    # Build templates into finished files
+    dockerize \
+        -template "/usr/local/etc/php/php.ini.tmpl:/usr/local/etc/php/php.ini" \
+        -template "/usr/local/etc/php/php-cli.ini.tmpl:/usr/local/etc/php/php-cli.ini" \
+        -template "/srv/sylius/webpack.config.js.tmpl:/srv/sylius/webpack.config.js"
+
     if [ "$APP_ENV" != 'prod' ] && [ "$ENQUEUE_CONSUMER" != 'true' ]; then
         composer install --prefer-dist --no-progress --no-suggest --no-interaction
         bin/console assets:install --no-interaction
         bin/console sylius:theme:assets:install public --no-interaction
+    fi
+
+    if [ "$CUSTOM_OVERRIDE" == 'true' ]; then
+        composer install --prefer-dist --no-autoloader --no-scripts --no-progress --no-suggest
+        composer dump-autoload --classmap-authoritative
+        composer run-script post-install-cmd
+        bin/console sylius:install:assets
+        bin/console sylius:theme:assets:install public
     fi
 
     until bin/console doctrine:query:sql "select 1" >/dev/null 2>&1; do

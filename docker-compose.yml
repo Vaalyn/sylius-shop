@@ -59,7 +59,7 @@ services:
         volumes:
             - ./public/media:/srv/sylius/public/media:ro,delegated
         ports:
-            - "80:80"
+            - "${NGINX_PORT:-80}:80"
 
     elasticsearch:
         image: vaachar/sylius_elasticsearch:latest

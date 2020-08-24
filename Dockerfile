@@ -3,9 +3,11 @@
 
 ARG PHP_VERSION=7.3
 ARG NODE_VERSION=10
-ARG NGINX_VERSION=1.16
+ARG NGINX_VERSION=1.19
 
 FROM php:${PHP_VERSION}-fpm-alpine AS sylius_php_stage_1
+
+COPY --from=jwilder/dockerize:latest /usr/local/bin/dockerize /usr/local/bin/dockerize
 
 # persistent / runtime deps
 RUN apk add --no-cache \
@@ -75,8 +77,15 @@ RUN set -eux; \
     apk del .build-deps
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-COPY docker/php/php.ini /usr/local/etc/php/php.ini
-COPY docker/php/php-cli.ini /usr/local/etc/php/php-cli.ini
+COPY docker/php/php.ini.tmpl /usr/local/etc/php/php.ini.tmpl
+COPY docker/php/php-cli.ini.tmpl /usr/local/etc/php/php-cli.ini.tmpl
+COPY webpack.config.js.tmpl /srv/sylius/webpack.config.js.tmpl
+
+# Build templates into finished files
+RUN dockerize \
+    -template "/usr/local/etc/php/php.ini.tmpl:/usr/local/etc/php/php.ini" \
+    -template "/usr/local/etc/php/php-cli.ini.tmpl:/usr/local/etc/php/php-cli.ini" \
+    -template "/srv/sylius/webpack.config.js.tmpl:/srv/sylius/webpack.config.js"
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
@@ -153,7 +162,7 @@ COPY --from=sylius_php_stage_1 /srv/sylius/public public/
 COPY --from=sylius_php_stage_1 /srv/sylius/themes themes/
 COPY --from=sylius_php_stage_1 /srv/sylius/vendor vendor/
 
-COPY webpack.config.js ./
+COPY --from=sylius_php_stage_1 /srv/sylius/webpack.config.js ./
 
 RUN yarn encore production
 
@@ -175,7 +184,12 @@ COPY --from=sylius_nodejs /srv/sylius/public public/
 
 FROM nginx:${NGINX_VERSION}-alpine AS sylius_nginx
 
-COPY docker/nginx/conf.d/default.conf /etc/nginx/conf.d/
+COPY docker/nginx/docker-entrypoint.d /docker-entrypoint.d/
+RUN chmod -R +x /docker-entrypoint.d
+
+COPY --from=jwilder/dockerize:latest /usr/local/bin/dockerize /usr/local/bin/dockerize
+
+COPY docker/nginx/conf.d/default.conf.tmpl /etc/nginx/conf.d/
 
 WORKDIR /srv/sylius
 
