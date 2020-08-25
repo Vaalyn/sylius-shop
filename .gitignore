@@ -44,3 +44,5 @@ yarn-error.log
 /.env
 /themes/*
 !/themes/.gitignore
+
+/webpack.config.js
