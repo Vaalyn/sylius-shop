@@ -1086,6 +1086,9 @@
     "white-october/pagerfanta-bundle": {
         "version": "v1.2.1"
     },
+    "wikimedia/composer-merge-plugin": {
+        "version": "v1.4.1"
+    },
     "willdurand/hateoas": {
         "version": "2.12.0"
     },
