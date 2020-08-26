@@ -9,7 +9,7 @@ This is a Shop built on the [**Sylius Standard Edition**](https://github.com/Syl
 - [**joppedc/sylius-better-seo-plugin**](https://github.com/JoppeDC/SyliusBetterSeoPlugin)
 - [**mangoweb-sylius/sylius-order-comments-plugin**](https://github.com/mangoweb-sylius/SyliusOrderCommentsPlugin)
 - [**monsieurbiz/sylius-search-plugin**](https://github.com/monsieurbiz/SyliusSearchPlugin)
-- [**odiseoteam/sylius-banner-plugin**](https://github.com/odiseoteam/RbacPlugin)
+- [**odiseoteam/sylius-banner-plugin**](https://github.com/odiseoteam/SyliusBannerPlugin)
 - [**setono/sylius-terms-plugin**](https://github.com/Setono/SyliusTermsPlugin)
 - [**sylius/invoicing-plugin**](https://github.com/Sylius/InvoicingPlugin)
 - [**sylius/refund-plugin**](https://github.com/Sylius/RefundPlugin)
