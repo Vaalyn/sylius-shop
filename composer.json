@@ -32,7 +32,8 @@
         "symfony/dotenv": "^4.4",
         "symfony/flex": "^1.2",
         "symfony/webpack-encore-bundle": "^1.7",
-        "vaachar/sylius-shipping-information-page-plugin": "dev-master"
+        "vaachar/sylius-shipping-information-page-plugin": "dev-master",
+        "wikimedia/composer-merge-plugin": "^1.4"
     },
     "require-dev": {
         "behat/behat": "^3.6.1",
@@ -117,6 +118,18 @@
         },
         "branch-alias": {
             "dev-master": "1.7-dev"
-        }
+        },
+        "merge-plugin": {
+            "include": [
+              "themes/*/composer.json"
+            ],
+            "recurse": true,
+            "replace": true,
+            "ignore-duplicates": false,
+            "merge-dev": true,
+            "merge-extra": false,
+            "merge-extra-deep": false,
+            "merge-scripts": false
+          }
     }
 }
