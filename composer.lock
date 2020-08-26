@@ -8143,16 +8143,16 @@
         },
         {
             "name": "sylius/resource-bundle",
-            "version": "v1.6.3",
+            "version": "v1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "bba7e56ad60d05ce8884e1aa7ac8874abed7ad1f"
+                "reference": "8a137d119671f0f75ebab302a384a0623d98de01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/bba7e56ad60d05ce8884e1aa7ac8874abed7ad1f",
-                "reference": "bba7e56ad60d05ce8884e1aa7ac8874abed7ad1f",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/8a137d119671f0f75ebab302a384a0623d98de01",
+                "reference": "8a137d119671f0f75ebab302a384a0623d98de01",
                 "shasum": ""
             },
             "require": {
@@ -8239,7 +8239,7 @@
                 "storage",
                 "sylius"
             ],
-            "time": "2020-01-27T12:48:25+00:00"
+            "time": "2020-08-18T07:16:31+00:00"
         },
         {
             "name": "sylius/sylius",
