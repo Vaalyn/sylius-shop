@@ -30,3 +30,9 @@ sylius_invoicing_plugin:
             hello: 'Hello,'
             thank_you: 'Thank you for your purchase!'
             your_team: 'Your %channelName% team'
+
+sylius_rbac:
+    ui:
+        permission:
+            bitbag_cms: CMS management
+            mollie: 'Mollie log management'
