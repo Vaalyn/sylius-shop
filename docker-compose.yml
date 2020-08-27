@@ -80,5 +80,11 @@ services:
                 soft: -1
                 hard: -1
 
+    redis:
+        image: vaachar/sylius_redis:latest
+        restart: unless-stopped
+        volumes:
+            - ./docker/redis/data:/data:rw,delegated
+
 volumes:
     elasticsearch-data:
