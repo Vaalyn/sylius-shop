@@ -56,3 +56,4 @@ jobs:
             docker push vaachar/sylius_php:$TAG_VERSION
             docker push vaachar/sylius_nginx:$TAG_VERSION
             docker push vaachar/sylius_elasticsearch:$TAG_VERSION
+            docker push vaachar/sylius_redis:$TAG_VERSION
