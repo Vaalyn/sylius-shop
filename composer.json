@@ -25,6 +25,7 @@
         "maxmind-db/reader": "^1.6",
         "monsieurbiz/sylius-search-plugin": "^0.2.0",
         "odiseoteam/sylius-banner-plugin": "^1.0",
+        "odiseoteam/sylius-rbac-plugin": "^1.0",
         "setono/sylius-terms-plugin": "^1.0",
         "sylius/invoicing-plugin": "dev-dev-add-flysystem-storage",
         "sylius/refund-plugin": "^1.0.0-RC.3",

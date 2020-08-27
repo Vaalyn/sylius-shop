@@ -1,0 +1,10 @@
+imports:
+    - { resource: "@OdiseoSyliusRbacPlugin/Resources/config/config.yml" }
+
+odiseo_sylius_rbac:
+    custom_sections:
+        bitbag_cms:
+            - bitbag_sylius_cms_plugin_admin
+        mollie:
+            - bitbag_mollie_logger
+            - bitbag_sylius_mollie_plugin_admin_mollie_logger

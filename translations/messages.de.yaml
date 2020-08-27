@@ -150,3 +150,25 @@ monsieurbiz_searchplugin:
             form:
                 title: Suche
                 filterable: Filterbar
+
+sylius_rbac:
+    ui:
+        administration_role: 'Admin Rolle'
+        administration_roles: 'Admin Rollen'
+        edit_administration_role: 'Admin Rolle bearbeiten'
+        new_administration_role: 'Neue Admin Rolle erstellen'
+        permission:
+            bitbag_cms: CMS verwalten
+            catalog_management: 'Katalog verwalten'
+            configuration: 'Einstellungen verwalten'
+            customers_management: 'Kunden verwalten'
+            marketing_management: 'Marketing verwalten'
+            mollie: 'Mollie Logs verwalten'
+            operation_type:
+                read: 'Lesen'
+                write: 'Schreiben'
+            rbac: 'Rechteverwaltung (RBAC)'
+            sales_management: 'Verkäufe verwalten'
+        permissions: 'Berechtigungen'
+        rbac: 'Rechteverwaltung (RBAC)'
+        rbac_role: 'RBAC Rolle'

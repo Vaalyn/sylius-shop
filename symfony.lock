@@ -2,6 +2,9 @@
     "akeneo/phpspec-skip-example-extension": {
         "version": "v3.0.0"
     },
+    "beberlei/assert": {
+        "version": "v3.2.7"
+    },
     "behat/behat": {
         "version": "v3.5.0"
     },
@@ -417,6 +420,9 @@
     "odiseoteam/sylius-banner-plugin": {
         "version": "v1.0.10"
     },
+    "odiseoteam/sylius-rbac-plugin": {
+        "version": "v1.0.1"
+    },
     "oneup/flysystem-bundle": {
         "version": "3.0",
         "recipe": {
@@ -551,6 +557,24 @@
     },
     "polishsymfonycommunity/symfony-mocker-container": {
         "version": "v1.0.2"
+    },
+    "prooph/common": {
+        "version": "v4.4.0"
+    },
+    "prooph/service-bus": {
+        "version": "v6.2.2"
+    },
+    "prooph/service-bus-symfony-bundle": {
+        "version": "0.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.6",
+            "ref": "0f6a365fc510a949d4d75868b66fa19503e525c9"
+        },
+        "files": [
+            "config/packages/prooph_service_bus.yaml"
+        ]
     },
     "psr/cache": {
         "version": "1.0.1"
