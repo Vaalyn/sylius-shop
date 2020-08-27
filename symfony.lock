@@ -727,9 +727,6 @@
     "sylius/mailer-bundle": {
         "version": "v1.4.4"
     },
-    "sylius/rbac-plugin": {
-        "version": "v0.3.0"
-    },
     "sylius/refund-plugin": {
         "version": "0.4",
         "recipe": {
