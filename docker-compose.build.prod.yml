@@ -41,3 +41,9 @@ services:
         build:
             context: .
             target: sylius_elasticsearch
+
+    redis:
+        image: vaachar/sylius_redis:${TAG_VERSION:-latest}
+        build:
+            context: .
+            target: sylius_redis

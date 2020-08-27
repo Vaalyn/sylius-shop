@@ -203,3 +203,12 @@ FROM docker.elastic.co/elasticsearch/elasticsearch:7.4.0 as sylius_elasticsearch
 # Install ES plugins
 RUN bin/elasticsearch-plugin install analysis-phonetic
 RUN bin/elasticsearch-plugin install analysis-icu
+
+# Redis image
+#-------------
+
+FROM redis:6.0-alpine as sylius_redis
+
+COPY docker/redis/redis.conf /usr/local/etc/redis/redis.conf
+
+CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]

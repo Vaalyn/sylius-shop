@@ -15,6 +15,7 @@
 /docker-compose.override.yaml
 /docker-compose.override.yml
 /docker/mysql/data/
+/docker/redis/data/
 
 ###> symfony/framework-bundle ###
 /.env.*.local
