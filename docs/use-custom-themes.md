@@ -9,19 +9,13 @@ services:
         environment:
             - CUSTOM_OVERRIDE=true
         volumes:
-            - .:/srv/sylius:rw,cached
             - ./themes/webpack_encore.yaml:/srv/sylius/config/packages/dev/webpack_encore.yaml
             - ./themes/webpack_encore.yaml:/srv/sylius/config/packages/prod/webpack_encore.yaml
 
     enqueue_consumer:
         volumes:
-            - .:/srv/sylius:rw,cached
             - ./themes/webpack_encore.yaml:/srv/sylius/config/packages/dev/webpack_encore.yaml
             - ./themes/webpack_encore.yaml:/srv/sylius/config/packages/prod/webpack_encore.yaml
-
-    nginx:
-        volumes:
-            - ./public:/srv/sylius/public:ro,delegated
 
     nodejs:
         image: vaachar/sylius_nodejs:${TAG_VERSION:-latest}

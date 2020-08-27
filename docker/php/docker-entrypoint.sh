@@ -23,7 +23,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
         bin/console sylius:theme:assets:install public --no-interaction
     fi
 
-    if [ "$CUSTOM_OVERRIDE" == 'true' ]; then
+    if [ "$CUSTOM_OVERRIDE" == 'true' ] && [ "$ENQUEUE_CONSUMER" != 'true' ]; then
         composer install --prefer-dist --no-autoloader --no-scripts --no-progress --no-suggest
         composer dump-autoload --classmap-authoritative
         composer run-script post-install-cmd
@@ -40,8 +40,10 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
         bin/console doctrine:migrations:migrate --no-interaction
     fi
 
-    bin/console cache:clear --env=$APP_ENV
-    chown -R www-data:www-data var
+    if [ "$ENQUEUE_CONSUMER" != 'true' ]; then
+        bin/console cache:clear --env=$APP_ENV
+        chown -R www-data:www-data var
+    fi
 fi
 
 exec docker-php-entrypoint "$@"
