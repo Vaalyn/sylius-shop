@@ -1,0 +1,85 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+
+{% block title %}{{ 'mango_contact_form_plugin.title.customer.show'|trans }} | {% endblock %}
+
+{% block breadcrumb %}
+    <div class="ui breadcrumb">
+        <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
+        <div class="divider"> /</div>
+        <a href="{{ path('sylius_shop_account_dashboard') }}" class="section">{{ 'sylius.ui.my_account'|trans }}</a>
+        <div class="divider"> /</div>
+        <a href="{{ path('mango_sylius_contact_form_shop_account_message_index') }}"
+           class="section">{{ 'mango_contact_form_plugin.title.customer.index'|trans }}</a>
+        <div class="divider"> /</div>
+        <div class="active section">{{ 'mango_contact_form_plugin.title.customer.show'|trans }}</div>
+    </div>
+{% endblock %}
+
+{% block subcontent %}
+
+    <h1 class="ui header">
+        <i class="circular comments icon"></i>
+        <div class="content">
+            {{ 'mango_contact_form_plugin.title.customer.show'|trans }}
+            <div class="sub header">{{ 'mango_contact_form_plugin.ui.subtitle'|trans }}</div>
+        </div>
+    </h1>
+
+    <div class="ui comments">
+        <div class="ui segment">
+            <div class="comment">
+                <div class="content">
+                    <span class="author">{{ 'mango_contact_form_plugin.account.name'|trans }}</span>
+
+                    <div class="metadata">
+                        <span class="date">{{ message.createdAt|date }}</span>
+                    </div>
+
+                    <br/><br/>
+
+                    <div class="text">{{ message.message }}</div>
+                </div>
+            </div>
+        </div>
+
+        {% if answers %}
+            {% for answer in answers %}
+                <div class="ui segment">
+                    <div class="comment">
+                        <div class="content">
+                            <span class="author">
+                                {% if answer.adminUser %}
+                                    {{ 'mango_contact_form_plugin.account.reply'|trans }}
+                                {% else %}
+                                    {{ 'mango_contact_form_plugin.account.name'|trans }}
+                                {% endif %}
+                            </span>
+
+                            <div class="metadata">
+                                <span class="date">{{ answer.createdAt|date }}</span>
+                            </div>
+
+                            <br/><br/>
+
+                            <div class="text">{{ answer.message }}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="ui segment">
+        <div class="ui form">
+            {{ form_start(form, {'attr': {'class': 'ui reply form'}}) }}
+            <div class="field">
+                {{ form_row(form.message) }}
+            </div>
+            <button type="submit" class="ui blue labeled submit icon button" id="formSubmitButton">
+                <i class="icon edit"></i> {{ 'mango_contact_form_plugin.admin.form.submitButton'|trans }}
+            </button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+mango_sylius_contact_form:
+    # Define if an email should be send to the manager when contact form is send
+    send_manager_mail: '%env(bool:CONTACT_FORM_SEND_MANAGER_MAIL)%'
+    # Define if an email should be send to the customer when contact form is send (copy)
+    send_customer_mail: '%env(bool:CONTACT_FORM_SEND_CUSTOMER_MAIL)%'
+    # Define 'name' field requirement in contact form
+    name_required: '%env(bool:CONTACT_FORM_NAME_REQUIRED)%'
+    # Define 'phone' field requirement in contact form
+    phone_required: '%env(bool:CONTACT_FORM_PHONE_REQUIRED)%'

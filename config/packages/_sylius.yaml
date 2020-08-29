@@ -22,6 +22,8 @@ imports:
 
     - { resource: "@OdiseoSyliusBannerPlugin/Resources/config/config.yaml" }
 
+    - { resource: "@MangoSyliusContactFormPlugin/Resources/config/config.yml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
     images_dir: '/media/image/'

@@ -172,3 +172,49 @@ sylius_rbac:
         permissions: 'Berechtigungen'
         rbac: 'Rechteverwaltung (RBAC)'
         rbac_role: 'RBAC Rolle'
+
+mango_contact_form_plugin:
+    title:
+        contact: 'Kontaktformular'
+        answer: 'Nachricht beantworten'
+        customer:
+            index: 'Nachrichtenverlauf'
+            show: 'Nachrichten anzeigen'
+    required: 'Pflichtfeld'
+    customerName: 'Name'
+    email: 'E-Mail'
+    phone: 'Telefon'
+    message: 'Nachricht'
+    success: 'Die Nachricht wurde erfolgreich gesendet.'
+    error:
+        form: 'Beim Senden der Nachricht ist ein Fehler aufgetreten'
+        recaptcha: 'ReCAPTCHA ist nicht gültig'
+    time: 'Gesendet um %time%'
+    name: 'Von %name%'
+    subject:
+        shopManager: 'Nachricht von %customerName%'
+        customer: 'Nachricht gesendet'
+        answer: 'Neue Antwort'
+    label:
+        date: 'Datum'
+        name: 'Name'
+        email: 'E-Mail'
+        phone: 'Telefon'
+        message: 'Nachricht'
+    account:
+        name: 'Deine Nachricht'
+        reply: Antwort
+    admin:
+        form:
+            submitButton: Anwort hinzufügen
+        show:
+            custommer: Kunde
+            admin: Administrator
+    ui:
+        title: 'Nachrichten'
+        subtitle: 'Verwalte deine Nachrichten'
+        detailTitle: 'Nachrichten von %customerName%'
+        messages: 'Nachrichten'
+        new_message: 'Neue Nachricht'
+        show_message: "Zeige Nachricht"
+

@@ -1,0 +1,29 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+
+{% block breadcrumb %}
+    <div class="ui breadcrumb">
+        <a href="{{ path('sylius_shop_homepage') }}" class="section">{{ 'sylius.ui.home'|trans }}</a>
+        <div class="divider"> / </div>
+        <a href="{{ path('sylius_shop_account_dashboard') }}" class="section">{{ 'sylius.ui.my_account'|trans }}</a>
+        <div class="divider"> / </div>
+        <div class="active section">{{ 'mango_contact_form_plugin.title.customer.index'|trans }}</div>
+    </div>
+{% endblock %}
+
+{% block subcontent %}
+    <h1 class="ui header">
+        <i class="circular comments icon"></i>
+        <div class="content">
+            {{ 'mango_contact_form_plugin.title.customer.index'|trans }}
+            <div class="sub header">{{ 'mango_contact_form_plugin.ui.subtitle'|trans }}</div>
+        </div>
+    </h1>
+
+    {{ sylius_grid_render(resources, '@SyliusShop/Grid/_default.html.twig') }}
+
+    <div class="ui hidden divider"></div>
+
+    <a href="{{ path('sylius_shop_contact_request') }}" class="fluid ui labeled primary icon button">
+        <i class="mail icon"></i>{{ 'sylius.ui.contact'|trans  }}
+    </a>
+{% endblock %}
