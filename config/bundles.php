@@ -75,4 +75,5 @@ return [
     Odiseo\SyliusBannerPlugin\OdiseoSyliusBannerPlugin::class => ['all' => true],
     Prooph\Bundle\ServiceBus\ProophServiceBusBundle::class => ['all' => true],
     Odiseo\SyliusRbacPlugin\OdiseoSyliusRbacPlugin::class => ['all' => true],
+    MangoSylius\SyliusContactFormPlugin\MangoSyliusContactFormPlugin::class => ['all' => true],
 ];

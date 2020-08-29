@@ -7,6 +7,7 @@ This is a Shop built on the [**Sylius Standard Edition**](https://github.com/Syl
 - [**bitbag/mollie-plugin**](https://github.com/BitBagCommerce/SyliusMolliePlugin)
 - [**bitbag/product-bundle-plugin**](https://github.com/BitBagCommerce/SyliusProductBundlePlugin)
 - [**joppedc/sylius-better-seo-plugin**](https://github.com/JoppeDC/SyliusBetterSeoPlugin)
+- [**mangoweb-sylius/SyliusContactFormPlugin**](https://github.com/mangoweb-sylius/SyliusContactFormPlugin)
 - [**mangoweb-sylius/sylius-order-comments-plugin**](https://github.com/mangoweb-sylius/SyliusOrderCommentsPlugin)
 - [**monsieurbiz/sylius-search-plugin**](https://github.com/monsieurbiz/SyliusSearchPlugin)
 - [**odiseoteam/RbacPlugin**](https://github.com/odiseoteam/RbacPlugin)
