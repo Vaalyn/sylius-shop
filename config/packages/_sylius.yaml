@@ -24,6 +24,8 @@ imports:
 
     - { resource: "@MangoSyliusContactFormPlugin/Resources/config/config.yml" }
 
+    - { resource: "@Brille24SyliusCustomerOptionsPlugin/Resources/config/app/config.yml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
     images_dir: '/media/image/'
