@@ -35,6 +35,9 @@
     "bitbag/product-bundle-plugin": {
         "version": "v1.0.0"
     },
+    "brille24/sylius-customer-options-plugin": {
+        "version": "2.6.1"
+    },
     "clue/stream-filter": {
         "version": "v1.4.0"
     },

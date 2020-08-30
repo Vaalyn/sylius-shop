@@ -76,4 +76,5 @@ return [
     Prooph\Bundle\ServiceBus\ProophServiceBusBundle::class => ['all' => true],
     Odiseo\SyliusRbacPlugin\OdiseoSyliusRbacPlugin::class => ['all' => true],
     MangoSylius\SyliusContactFormPlugin\MangoSyliusContactFormPlugin::class => ['all' => true],
+    Brille24\SyliusCustomerOptionsPlugin\Brille24SyliusCustomerOptionsPlugin::class => ['all' => true],
 ];

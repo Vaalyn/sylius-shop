@@ -216,5 +216,11 @@ mango_contact_form_plugin:
         detailTitle: 'Nachrichten von %customerName%'
         messages: 'Nachrichten'
         new_message: 'Neue Nachricht'
-        show_message: "Zeige Nachricht"
+        show_message: 'Zeige Nachricht'
 
+brille24:
+    form:
+        config:
+            multiple: Mehrere
+    ui:
+        customization_total: Summe für Anpassungen

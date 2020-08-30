@@ -6,6 +6,7 @@ This is a Shop built on the [**Sylius Standard Edition**](https://github.com/Syl
 - [**bitbag/cms-plugin**](https://github.com/BitBagCommerce/SyliusCmsPlugin)
 - [**bitbag/mollie-plugin**](https://github.com/BitBagCommerce/SyliusMolliePlugin)
 - [**bitbag/product-bundle-plugin**](https://github.com/BitBagCommerce/SyliusProductBundlePlugin)
+- [**brille24/sylius-customer-options-plugin**](https://github.com/Brille24/SyliusCustomOptionsPlugin)
 - [**joppedc/sylius-better-seo-plugin**](https://github.com/JoppeDC/SyliusBetterSeoPlugin)
 - [**mangoweb-sylius/SyliusContactFormPlugin**](https://github.com/mangoweb-sylius/SyliusContactFormPlugin)
 - [**mangoweb-sylius/sylius-order-comments-plugin**](https://github.com/mangoweb-sylius/SyliusOrderCommentsPlugin)

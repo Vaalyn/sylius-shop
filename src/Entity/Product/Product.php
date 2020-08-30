@@ -6,6 +6,8 @@ namespace App\Entity\Product;
 
 use BitBag\SyliusProductBundlePlugin\Entity\ProductBundlesAwareInterface;
 use BitBag\SyliusProductBundlePlugin\Entity\ProductBundlesAwareTrait;
+use Brille24\SyliusCustomerOptionsPlugin\Entity\ProductInterface as ProductCustomerOptionProductInterface;
+use Brille24\SyliusCustomerOptionsPlugin\Traits\ProductCustomerOptionCapableTrait;
 use Doctrine\ORM\Mapping as ORM;
 use JoppeDc\SyliusBetterSeoPlugin\Entity\HasSeoInterface;
 use JoppeDc\SyliusBetterSeoPlugin\Entity\Traits\SeoTrait;
@@ -19,7 +21,7 @@ use Sylius\Component\Product\Model\ProductTranslationInterface;
  * @ORM\Entity
  * @ORM\Table(name="sylius_product")
  */
-class Product extends BaseProduct implements ProductBundlesAwareInterface, DocumentableInterface, HasSeoInterface
+class Product extends BaseProduct implements ProductBundlesAwareInterface, DocumentableInterface, HasSeoInterface, ProductCustomerOptionProductInterface
 {
     use ProductBundlesAwareTrait;
     use DocumentableProductTrait;
@@ -27,6 +29,9 @@ class Product extends BaseProduct implements ProductBundlesAwareInterface, Docum
         convertToDocument as protected traitConvertToDocument;
     }
     use SeoTrait;
+    use ProductCustomerOptionCapableTrait {
+        __construct as protected customerOptionCapableConstructor;
+    }
 
     /**
      * @ORM\OneToOne(targetEntity="BitBag\SyliusProductBundlePlugin\Entity\ProductBundleInterface", mappedBy="product", cascade={"persist"})
@@ -34,6 +39,13 @@ class Product extends BaseProduct implements ProductBundlesAwareInterface, Docum
      * @var ProductBundleInterface
      */
     protected $productBundle;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->customerOptionCapableConstructor();
+    }
 
     protected function createTranslation(): ProductTranslationInterface
     {

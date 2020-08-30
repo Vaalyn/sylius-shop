@@ -1,0 +1,2 @@
+brille24_customer_options:
+    resource: "@Brille24SyliusCustomerOptionsPlugin/Resources/config/app/routing.yml"
