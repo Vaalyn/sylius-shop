@@ -150,6 +150,20 @@ monsieurbiz_searchplugin:
             form:
                 title: Suche
                 filterable: Filterbar
+    search:
+        result:
+            search_result: 'Suchergebniss: "%query%"'
+            search_result_count: '%count% Artikel'
+            no_result: 'Keine Ergebnisse'
+    filters:
+        filter_results: 'Filter'
+        apply_filters: 'Filter anwenden'
+        no_filter: 'Keine Filter verfügbar'
+        taxon_filter: 'Kategorien'
+        price_filter: 'Preis'
+        price_min: 'Min Preis'
+        price_max: 'Max Preis'
+        loading: 'Lade Ergebnisse...'
 
 sylius_rbac:
     ui:

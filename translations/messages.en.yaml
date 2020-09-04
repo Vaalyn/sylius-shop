@@ -36,3 +36,13 @@ sylius_rbac:
         permission:
             bitbag_cms: CMS management
             mollie: 'Mollie log management'
+
+monsieurbiz_searchplugin:
+    search:
+        result:
+            search_result: 'Search results: "%query%"'
+            search_result_count: '%count% items'
+            no_result: 'Keine Ergebnisse'
+    filters:
+        filter_results: 'Filter'
+        loading: 'Loading results...'
