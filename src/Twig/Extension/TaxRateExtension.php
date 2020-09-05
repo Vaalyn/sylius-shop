@@ -5,13 +5,16 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\Entity\Addressing\Address;
+use App\Provider\ProductVariantsPricesProvider;
 use App\Service\IpGeolocator\IpGeolocatorInterface;
 use Sylius\Component\Addressing\Matcher\ZoneMatcherInterface;
+use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Addressing\Model\ZoneMemberInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Calculator\ProductVariantPriceCalculatorInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\CustomerInterface;
+use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Core\Model\Scope;
 use Sylius\Component\Core\Model\TaxRateInterface;
@@ -48,6 +51,15 @@ class TaxRateExtension extends AbstractExtension
     /** @var ProductVariantPriceCalculatorInterface $productVariantPriceCalculator */
     protected $productVariantPriceCalculator;
 
+    /** @var ProductVariantsPricesProvider */
+    protected $productVariantsPricesProvider;
+
+    /** @var ZoneInteface */
+    protected $customerTaxZone;
+
+    /** @var ZoneInterface */
+    protected $geolocationTaxZone;
+
     public function __construct(
         ProductVariantRepositoryInterface $productVariantRepository,
         CustomerContextInterface $customerContext,
@@ -56,7 +68,8 @@ class TaxRateExtension extends AbstractExtension
         TaxRateResolverInterface $taxRateResolver,
         IpGeolocatorInterface $ipGeolocator,
         RequestStack $requestStack,
-        ProductVariantPriceCalculatorInterface $productVariantPriceCalculator
+        ProductVariantPriceCalculatorInterface $productVariantPriceCalculator,
+        ProductVariantsPricesProvider $productVariantsPricesProvider
     ) {
         $this->productVariantRepository = $productVariantRepository;
         $this->customerContext = $customerContext;
@@ -66,6 +79,7 @@ class TaxRateExtension extends AbstractExtension
         $this->ipGeolocator = $ipGeolocator;
         $this->requestStack = $requestStack;
         $this->productVariantPriceCalculator = $productVariantPriceCalculator;
+        $this->productVariantsPricesProvider = $productVariantsPricesProvider;
     }
 
     public function getFunctions()
@@ -79,13 +93,13 @@ class TaxRateExtension extends AbstractExtension
                 $options
             ),
             new TwigFunction(
-                'vaachar_tax_rate_product_variant',
-                [$this, 'productVariantTaxRate'],
+                'vaachar_product_variant_prices',
+                [$this, 'productVariantPrices'],
                 $options
             ),
             new TwigFunction(
-                'vaachar_option_prices_product_variant',
-                [$this, 'productVariantOptionPrices'],
+                'vaachar_tax_rate_product_variant',
+                [$this, 'productVariantTaxRate'],
                 $options
             ),
             new TwigFunction(
@@ -99,6 +113,11 @@ class TaxRateExtension extends AbstractExtension
     public function productVariantForVariantCode(string $variantCode): ?ProductVariantInterface
     {
         return $this->productVariantRepository->findOneByVariantCode($variantCode);
+    }
+
+    public function productVariantPrices(ProductInterface $product, ChannelInterface $channel): array
+    {
+        return $this->productVariantsPricesProvider->provideVariantsPrices($product, $channel);
     }
 
     public function productVariantTaxRate(
@@ -121,26 +140,6 @@ class TaxRateExtension extends AbstractExtension
         return $this->fetchDefaultTaxRateForProductVariant(
             $productVariant
         );
-    }
-
-    public function productVariantOptionPrices(
-        ProductVariantInterface $productVariant
-    ): array {
-        $optionMap = [];
-
-        /** @var ProductOptionValueInterface $option */
-        foreach ($productVariant->getOptionValues() as $option) {
-            $optionMap[$option->getOptionCode()] = $option->getCode();
-        }
-
-        $channel = $this->channelContext->getChannel();
-
-        $optionMap['value'] = $this->productVariantPriceCalculator->calculate(
-            $productVariant,
-            ['channel' => $channel]
-        );
-
-        return $optionMap;
     }
 
     public function isGermanSmallBusinessTaxRate(?TaxRateInterface $taxRate): bool
@@ -173,29 +172,41 @@ class TaxRateExtension extends AbstractExtension
     protected function fetchCustomerTaxRateForProductVariant(
         ProductVariantInterface $productVariant
     ): ?TaxRateInterface {
-        /** @var CustomerInterface $customer */
-        $customer = $this->customerContext->getCustomer();
-        $customerAddress = isset($customer) ? $customer->getDefaultAddress() : null;
+        if ($this->customerTaxZone === null) {
+            /** @var CustomerInterface $customer */
+            $customer = $this->customerContext->getCustomer();
+            $customerAddress = isset($customer) ? $customer->getDefaultAddress() : null;
 
-        if ($customerAddress === null) {
-            return null;
+            if ($customerAddress !== null) {
+                $this->customerTaxZone = $this->zoneMatcher->match($customerAddress, Scope::TAX);
+            }
         }
 
-        $customerTaxZone = $this->zoneMatcher->match($customerAddress, Scope::TAX);
-
-        if ($customerTaxZone === null) {
+        if ($this->customerTaxZone === null) {
             return null;
         }
 
         return $this->taxRateResolver->resolve(
             $productVariant,
-            ['zone' => $customerTaxZone]
+            ['zone' => $this->customerTaxZone]
         );
     }
 
     protected function fetchGeoIpTaxRateForProductVariant(
         ProductVariantInterface $productVariant
     ): ?TaxRateInterface {
+        if ($this->geolocationTaxZone === null) {
+            $this->geolocationTaxZone = $this->fetchGeolocationTaxZone();
+        }
+
+        return $this->taxRateResolver->resolve(
+            $productVariant,
+            ['zone' => $this->geolocationTaxZone]
+        );
+    }
+
+    protected function fetchGeolocationTaxZone(): ?ZoneInterface
+    {
         $request = $this->requestStack->getCurrentRequest();
 
         if ($request === null) {
@@ -224,16 +235,7 @@ class TaxRateExtension extends AbstractExtension
         $geolocationAddress = new Address();
         $geolocationAddress->setCountryCode($geolocationCountryCode);
 
-        $geolocationTaxZone = $this->zoneMatcher->match($geolocationAddress, Scope::TAX);
-
-        if ($geolocationTaxZone === null) {
-            return null;
-        }
-
-        return $this->taxRateResolver->resolve(
-            $productVariant,
-            ['zone' => $geolocationTaxZone]
-        );
+        return $this->zoneMatcher->match($geolocationAddress, Scope::TAX);
     }
 
     protected function fetchDefaultTaxRateForProductVariant(
