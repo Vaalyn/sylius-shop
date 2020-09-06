@@ -1,0 +1,3 @@
+mango_sylius_sorting_plugin:
+    resource: "@MangoSyliusSortingPlugin/Resources/config/routing.yml"
+    prefix: /admin
