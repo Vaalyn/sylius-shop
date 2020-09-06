@@ -1,9 +1,45 @@
+# Expires map for caching headers
+map $sent_http_content_type $expires {
+    default                off;
+    text/html              epoch;
+    text/css               max;
+    application/javascript max;
+    ~image/                max;
+    ~font/                 max;
+}
+
 server {
     root /srv/sylius/public;
+
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_types
+        text/css
+        text/plain
+        text/javascript
+        application/javascript
+        application/json
+        application/x-javascript
+        application/xml
+        application/xml+rss
+        application/xhtml+xml
+        application/x-font-ttf
+        application/x-font-opentype
+        application/vnd.ms-fontobject
+        image/svg+xml
+        image/x-icon
+        application/rss+xml
+        application/atom_xml;
 
     location / {
         # try to serve file directly, fallback to index.php
         try_files $uri /index.php$is_args$args;
+
+        expires $expires;
     }
 
     location ~ ^/index\.php(/|$) {
