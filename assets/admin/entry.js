@@ -12,9 +12,6 @@ import '../../vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/priva
 import '../../vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/private/img/admin-logo.svg';
 import '../../vendor/sylius/sylius/src/Sylius/Bundle/UiBundle/Resources/private/img/logo.png';
 
-import '../../vendor/mangoweb-sylius/sylius-sorting-plugin/src/Resources/public/admin/css/sorting-plugin.css';
-import '../../vendor/mangoweb-sylius/sylius-sorting-plugin/src/Resources/public/admin/js/sorting-plugin.js';
-
 import './images/admin-logo-dark.png';
 
 import './scss/index.scss';
