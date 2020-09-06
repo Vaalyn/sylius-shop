@@ -25,6 +25,7 @@
         "joppedc/sylius-better-seo-plugin": "^1.0",
         "mangoweb-sylius/sylius-contact-form-plugin": "dev-master",
         "mangoweb-sylius/sylius-order-comments-plugin": "dev-change-message-to-text-type",
+        "mangoweb-sylius/sylius-sorting-plugin": "^1.0",
         "maxmind-db/reader": "^1.6",
         "monsieurbiz/sylius-search-plugin": "^0.2.0",
         "odiseoteam/sylius-banner-plugin": "^1.0",

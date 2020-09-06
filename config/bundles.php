@@ -77,4 +77,5 @@ return [
     Odiseo\SyliusRbacPlugin\OdiseoSyliusRbacPlugin::class => ['all' => true],
     MangoSylius\SyliusContactFormPlugin\MangoSyliusContactFormPlugin::class => ['all' => true],
     Brille24\SyliusCustomerOptionsPlugin\Brille24SyliusCustomerOptionsPlugin::class => ['all' => true],
+    MangoSylius\SortingPlugin\MangoSyliusSortingPlugin::class => ['all' => true],
 ];

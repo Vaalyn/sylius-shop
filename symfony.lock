@@ -387,6 +387,9 @@
     "mangoweb-sylius/sylius-order-comments-plugin": {
         "version": "v0.0.1-alpha"
     },
+    "mangoweb-sylius/sylius-sorting-plugin": {
+        "version": "v1.0.0"
+    },
     "matthiasnoback/symfony-config-test": {
         "version": "3.1.1"
     },
