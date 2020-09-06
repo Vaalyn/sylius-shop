@@ -6,7 +6,6 @@ sylius:
         about: 'About us'
         ready: 'Processing'
         contact: 'Contact'
-        your_store: 'VaaChar'
 
 vaachar:
     tax_rate:

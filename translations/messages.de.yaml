@@ -1,7 +1,6 @@
 sylius:
     ui:
         about: 'Über uns'
-        your_store: 'VaaChar'
         items_total: 'Summe der Artikel'
         taxes_total: 'Steuern Gesamt'
         shipping_estimated_cost: 'Geschätzte Versandkosten'
