@@ -1,0 +1,2 @@
+vaachar_sylius_shipping_information_page_plugin:
+    resource: "@VaaCharSyliusShippingInformationPagePlugin/Resources/config/routing.yml"
