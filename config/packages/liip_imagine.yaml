@@ -129,3 +129,21 @@ liip_imagine:
                 pngquant: { quality: [65, 85], speed: 1 }
                 jpegoptim: { strip_all: true, max: 70, progressive: true }
                 mozjpeg: { quality: 70, optimise: true }
+
+        odiseo_sylius_banner_plugin_image:
+            filters:
+                thumbnail: { size: [1127, 300], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
+
+        odiseo_sylius_banner_plugin_mobile_image:
+            filters:
+                thumbnail: { size: [739, 200], mode: outbound }
+            post_processors:
+                optipng: { strip: true, level: 7, process: { timeout: 1200 } }
+                pngquant: { quality: [65, 85], speed: 1 }
+                jpegoptim: { strip_all: true, max: 70, progressive: true }
+                mozjpeg: { quality: 70, optimise: true }
