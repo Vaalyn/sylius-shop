@@ -36,11 +36,9 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
         sleep 1
     done
 
-    if [ "$(ls -A src/Migrations/*.php 2> /dev/null)" ] && [ "$ENQUEUE_CONSUMER" != 'true' ]; then
-        bin/console doctrine:migrations:migrate --no-interaction
-    fi
-
     if [ "$ENQUEUE_CONSUMER" != 'true' ]; then
+        bin/console doctrine:migrations:migrate --no-interaction
+
         bin/console cache:clear --env=$APP_ENV
         chown -R www-data:www-data var
     fi
