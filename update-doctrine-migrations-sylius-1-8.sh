@@ -55,6 +55,8 @@ bin/console doctrine:migrations:version "Sylius\Bundle\AdminApiBundle\Migrations
 bin/console doctrine:migrations:version "Brille24\SyliusCustomerOptionsPlugin\Migrations\Version20191010092726" --add --no-interaction
 bin/console doctrine:migrations:version "Brille24\SyliusCustomerOptionsPlugin\Migrations\Version20191010092727" --add --no-interaction
 
+bin/console doctrine:migrations:version "Sylius\RefundPlugin\Migrations\Version20180704112314" --add --no-interaction
+
 for file in $(ls -1 src/Migrations/ | sed -e 's/\..*$//')
 do
     bin/console doctrine:migrations:version "DoctrineMigrations\\${file}" --add --no-interaction
