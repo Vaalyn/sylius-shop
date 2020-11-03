@@ -14,7 +14,7 @@
     "require": {
         "php": "^7.3",
         "bitbag/cms-plugin": "^2.3",
-        "bitbag/mollie-plugin": "^3.2.6",
+        "bitbag/mollie-plugin": "^3.3.2",
         "bitbag/product-bundle-plugin": "^1.0",
         "brille24/sylius-customer-options-plugin": "^2.6",
         "enqueue/enqueue-bundle": "^0.10.1",
@@ -24,22 +24,23 @@
         "h4cc/wkhtmltopdf-amd64": "^0.12.4",
         "joppedc/sylius-better-seo-plugin": "^1.0",
         "mangoweb-sylius/sylius-contact-form-plugin": "dev-master",
-        "mangoweb-sylius/sylius-order-comments-plugin": "dev-change-message-to-text-type",
-        "mangoweb-sylius/sylius-sorting-plugin": "^1.0",
+        "mangoweb-sylius/sylius-order-comments-plugin": "dev-vaachar-1-8",
+        "mangoweb-sylius/sylius-sorting-plugin": "dev-vaachar-1-8",
         "maxmind-db/reader": "^1.6",
         "monsieurbiz/sylius-search-plugin": "^0.2.0",
         "odiseoteam/sylius-banner-plugin": "^1.0",
         "odiseoteam/sylius-rbac-plugin": "^1.0",
         "predis/predis": "^1",
         "setono/sylius-terms-plugin": "^1.0",
+        "sylius/admin-order-creation-plugin": "^0.9.0",
         "sylius/invoicing-plugin": "dev-dev-add-flysystem-storage",
         "sylius/refund-plugin": "^1.0.0-RC.3",
-        "sylius/sylius": "~1.7.0@rc",
+        "sylius/sylius": "~1.8.0",
         "symfony/dotenv": "^4.4",
-        "symfony/flex": "^1.2",
+        "symfony/flex": "^1.9",
         "symfony/webpack-encore-bundle": "^1.7",
         "vaachar/sylius-shipping-information-page-plugin": "dev-master",
-        "wikimedia/composer-merge-plugin": "^1.4"
+        "wikimedia/composer-merge-plugin": "dev-feature/composer-v2"
     },
     "require-dev": {
         "behat/behat": "^3.6.1",
@@ -53,19 +54,26 @@
         "friends-of-behat/variadic-extension": "^1.1",
         "lakion/mink-debug-extension": "^1.2.3",
         "lchrusciel/api-test-case": "^3.0",
-        "phpspec/phpspec": "^6.0",
+        "phpspec/phpspec": "^6.2",
         "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan": "0.12.3",
-        "phpstan/phpstan-doctrine": "0.12.3",
-        "phpstan/phpstan-webmozart-assert": "0.12.0",
+        "phpstan/phpstan": "0.12.42",
+        "phpstan/phpstan-doctrine": "0.12.19",
+        "phpstan/phpstan-webmozart-assert": "0.12.7",
         "phpunit/phpunit": "^7.0",
         "sensiolabs/security-checker": "^6.0",
-        "stripe/stripe-php": "^6.28",
-        "sylius-labs/coding-standard": "^3.0",
+        "stripe/stripe-php": "^6.43",
+        "sylius-labs/coding-standard": "^3.2",
         "symfony/browser-kit": "^4.4",
         "symfony/debug-bundle": "^4.4",
         "symfony/intl": "^4.4",
         "symfony/web-profiler-bundle": "^4.4"
+    },
+    "conflict": {
+        "nikic/php-parser":"^4.7",
+        "doctrine/inflector": "^1.4",
+        "sylius/grid-bundle": "1.7.4",
+        "symfony/doctrine-bridge": "4.4.16",
+        "twig/twig": "2.6.1"
     },
     "repositories": [
         {
@@ -78,7 +86,15 @@
         },
         {
             "type": "vcs",
+            "url": "https://github.com/Vaalyn/SyliusSortingPlugin.git"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/Vaalyn/sylius-shipping-information-page-plugin.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mcaskill/composer-merge-plugin.git"
         }
     ],
     "prefer-stable": true,
@@ -110,9 +126,6 @@
         ]
     },
     "config": {
-        "platform": {
-            "php": "7.3.15"
-        },
         "preferred-install": {
             "*": "dist"
         },

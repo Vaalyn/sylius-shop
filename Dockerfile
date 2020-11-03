@@ -1,7 +1,7 @@
 # the different stages of this Dockerfile are meant to be built into separate images
 # https://docs.docker.com/compose/compose-file/#target
 
-ARG PHP_VERSION=7.3
+ARG PHP_VERSION=7.4
 ARG NODE_VERSION=10
 ARG NGINX_VERSION=1.19
 
@@ -12,6 +12,7 @@ COPY --from=jwilder/dockerize:latest /usr/local/bin/dockerize /usr/local/bin/doc
 # persistent / runtime deps
 RUN apk add --no-cache \
         acl \
+        fcgi \
         file \
         gettext \
         git \
@@ -23,7 +24,7 @@ RUN apk add --no-cache \
         pngquant \
     ;
 
-RUN apk add --no-cache autoconf automake build-base make cmake libtool nasm zlib
+RUN apk add --no-cache autoconf automake build-base make cmake libtool nasm zlib grep
 
 WORKDIR /src/mozjpeg
 RUN git clone git://github.com/mozilla/mozjpeg.git ./
@@ -31,7 +32,7 @@ RUN git clone git://github.com/mozilla/mozjpeg.git ./
 RUN cmake -G"Unix Makefiles" -DPNG_SUPPORTED=NO ./ \
   && make install
 
-ARG APCU_VERSION=5.1.17
+ARG APCU_VERSION=5.1.18
 RUN set -eux; \
     apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
@@ -48,8 +49,8 @@ RUN set -eux; \
         zlib-dev \
     ; \
     \
-    docker-php-ext-configure gd --with-jpeg-dir=/usr/local/ --with-png-dir=/usr/include --with-webp-dir=/usr/include --with-freetype-dir=/usr/include/; \
-    docker-php-ext-configure zip --with-libzip; \
+    docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype; \
+    docker-php-ext-configure zip; \
     docker-php-ext-install -j$(nproc) \
         exif \
         gd \
@@ -87,10 +88,11 @@ RUN dockerize \
     -template "/usr/local/etc/php/php-cli.ini.tmpl:/usr/local/etc/php/php-cli.ini" \
     -template "/srv/sylius/webpack.config.js.tmpl:/srv/sylius/webpack.config.js"
 
+ENV COMPOSER_PROCESS_TIMEOUT=900
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
+# install Symfony Flex globally to speed up download of Composer packages (parallelized prefetching)
 RUN set -eux; \
-    composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --classmap-authoritative; \
     composer clear-cache
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 

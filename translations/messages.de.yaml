@@ -63,8 +63,7 @@ sylius:
             has_been_sent_using: 'wurde mit folgendem Versandanbieter verschickt:'
             subject: 'Versandbestätigung'
             thank_you_for_transaction: 'Vielen Dank für Ihren Einkauf in unserem Shop!'
-            tracking_code: 'verfolgen.'
-            you_can_check_its_location: 'Sie können den Status Ihres Pakets mit der Sendungsnummer '
+            you_can_check_its_location_with_the_tracking_code: 'Sie können den Status Ihres Pakets mit der Sendungsnummer %tracking_code% verfolgen'
             your_order_with_number: 'Ihre Bestellung mit der Nummer'
         user_registration:
             start_shopping: 'Mit dem Einkaufen beginnen'
