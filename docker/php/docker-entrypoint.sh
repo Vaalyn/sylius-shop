@@ -36,6 +36,11 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'bin/console' ]; then
         sleep 1
     done
 
+    bin/console doctrine:query:sql "SELECT * FROM sylius_migrations WHERE version LIKE '%Version20170711151342%'" | grep -q "Version20170711151342" && migration_1_8_done=true || migration_1_8_done=false
+    if [ "$migration_1_8_done" == "false" ]; then
+        sh ./update-doctrine-migrations-sylius-1-8.sh
+    fi
+
     if [ "$ENQUEUE_CONSUMER" != 'true' ]; then
         bin/console doctrine:migrations:migrate --no-interaction
 

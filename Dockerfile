@@ -24,7 +24,7 @@ RUN apk add --no-cache \
         pngquant \
     ;
 
-RUN apk add --no-cache autoconf automake build-base make cmake libtool nasm zlib
+RUN apk add --no-cache autoconf automake build-base make cmake libtool nasm zlib grep
 
 WORKDIR /src/mozjpeg
 RUN git clone git://github.com/mozilla/mozjpeg.git ./
