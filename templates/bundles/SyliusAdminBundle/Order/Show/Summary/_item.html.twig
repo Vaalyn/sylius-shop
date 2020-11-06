@@ -58,6 +58,6 @@
     </td>
     <td class="right aligned total">
         {{ money.format(item.total, order.currencyCode) }}
-        <span class="tax-disabled">+ {{ money.convertAndFormat(item.getAdjustmentsTotalRecursively(customerOptionAdjustment)) }}</span>
+        <span class="tax-disabled">+ {{ money.format(item.getAdjustmentsTotalRecursively(customerOptionAdjustment), order.currencyCode) }}</span>
     </td>
 </tr>
