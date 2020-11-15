@@ -1122,6 +1122,9 @@
     "twig/twig": {
         "version": "v2.5.0"
     },
+    "vaachar/sylius-featured-products-plugin": {
+        "version": "dev-master"
+    },
     "vaachar/sylius-shipping-information-page-plugin": {
         "version": "1.7-dev"
     },

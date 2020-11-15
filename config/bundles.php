@@ -85,4 +85,5 @@ return [
     MangoSylius\SortingPlugin\MangoSyliusSortingPlugin::class => ['all' => true],
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
     Sylius\AdminOrderCreationPlugin\SyliusAdminOrderCreationPlugin::class => ['all' => true],
+    VaaChar\SyliusFeaturedProductsPlugin\SyliusFeaturedProductsPlugin::class => ['all' => true],
 ];

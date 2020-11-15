@@ -29,6 +29,8 @@ imports:
 
     - { resource: "@SyliusAdminOrderCreationPlugin/Resources/config/app/config.yml" }
 
+    - { resource: "@SyliusFeaturedProductsPlugin/Resources/config/config.yaml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
     images_dir: '/media/image/'
