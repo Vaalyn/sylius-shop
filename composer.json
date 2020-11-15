@@ -78,27 +78,27 @@
     },
     "repositories": [
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/Vaalyn/InvoicingPlugin"
         },
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/Vaalyn/SyliusOrderCommentsPlugin"
         },
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/Vaalyn/SyliusSortingPlugin.git"
         },
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/Vaalyn/sylius-shipping-information-page-plugin.git"
         },
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/Vaalyn/sylius-featured-products-plugin"
         },
         {
-            "type": "vcs",
+            "type": "git",
             "url": "https://github.com/mcaskill/composer-merge-plugin.git"
         }
     ],
