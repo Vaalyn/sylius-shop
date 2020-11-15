@@ -16,12 +16,14 @@ use MonsieurBiz\SyliusSearchPlugin\Model\Documentable\DocumentableInterface;
 use MonsieurBiz\SyliusSearchPlugin\Model\Documentable\DocumentableProductTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 use Sylius\Component\Product\Model\ProductTranslationInterface;
+use VaaChar\SyliusFeaturedProductsPlugin\Entity\HasFeaturedProductInterface;
+use VaaChar\SyliusFeaturedProductsPlugin\Entity\Traits\FeaturedProductTrait;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="sylius_product")
  */
-class Product extends BaseProduct implements ProductBundlesAwareInterface, DocumentableInterface, HasSeoInterface, ProductCustomerOptionProductInterface
+class Product extends BaseProduct implements ProductBundlesAwareInterface, DocumentableInterface, HasSeoInterface, ProductCustomerOptionProductInterface, HasFeaturedProductInterface
 {
     use ProductBundlesAwareTrait;
     use DocumentableProductTrait;
@@ -32,6 +34,7 @@ class Product extends BaseProduct implements ProductBundlesAwareInterface, Docum
     use ProductCustomerOptionCapableTrait {
         __construct as protected customerOptionCapableConstructor;
     }
+    use FeaturedProductTrait;
 
     /**
      * @ORM\OneToOne(targetEntity="BitBag\SyliusProductBundlePlugin\Entity\ProductBundleInterface", mappedBy="product", cascade={"persist"})

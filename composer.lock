@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48e7353f55f90548054c5a28d4247272",
+    "content-hash": "7b4e4d652550efd2e194655f99f7747d",
     "packages": [
         {
             "name": "api-platform/core",
@@ -15841,6 +15841,92 @@
             "time": "2020-10-27T19:25:29+00:00"
         },
         {
+            "name": "vaachar/sylius-featured-products-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Vaalyn/sylius-featured-products-plugin.git",
+                "reference": "8a17f29eb373ec122eb58c1a083c6eb3905f578c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Vaalyn/sylius-featured-products-plugin/zipball/8a17f29eb373ec122eb58c1a083c6eb3905f578c",
+                "reference": "8a17f29eb373ec122eb58c1a083c6eb3905f578c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4",
+                "sylius/sylius": "^1.8"
+            },
+            "require-dev": {
+                "behat/behat": "^3.6.1",
+                "behat/mink-selenium2-driver": "^1.4",
+                "dmore/behat-chrome-extension": "^1.3",
+                "dmore/chrome-mink-driver": "^2.7",
+                "friends-of-behat/mink": "^1.8",
+                "friends-of-behat/mink-browserkit-driver": "^1.4",
+                "friends-of-behat/mink-extension": "^2.4",
+                "friends-of-behat/page-object-extension": "^0.3",
+                "friends-of-behat/suite-settings-extension": "^1.0",
+                "friends-of-behat/symfony-extension": "^2.1",
+                "friends-of-behat/variadic-extension": "^1.3",
+                "lakion/mink-debug-extension": "^1.2.3",
+                "phpspec/phpspec": "^6.1",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "0.12.25",
+                "phpstan/phpstan-doctrine": "0.12.13",
+                "phpstan/phpstan-strict-rules": "^0.12.0",
+                "phpstan/phpstan-webmozart-assert": "0.12.4",
+                "phpunit/phpunit": "^8.5",
+                "sensiolabs/security-checker": "^6.0",
+                "sylius-labs/coding-standard": "^3.1",
+                "symfony/browser-kit": "^4.4",
+                "symfony/debug-bundle": "^4.4|^5.0",
+                "symfony/dotenv": "^4.4|^5.0",
+                "symfony/intl": "^4.4|^5.0",
+                "symfony/web-profiler-bundle": "^4.4|^5.0",
+                "symfony/web-server-bundle": "^4.4|^5.0",
+                "vimeo/psalm": "3.11.4"
+            },
+            "default-branch": true,
+            "type": "sylius-plugin",
+            "autoload": {
+                "psr-4": {
+                    "VaaChar\\SyliusFeaturedProductsPlugin\\": "src/",
+                    "Tests\\VaaChar\\SyliusFeaturedProductsPlugin\\": "tests/"
+                }
+            },
+            "autoload-dev": {
+                "classmap": [
+                    "tests/Application/Kernel.php"
+                ]
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "php bin/create_node_symlink.php"
+                ],
+                "post-update-cmd": [
+                    "php bin/create_node_symlink.php"
+                ],
+                "post-create-project-cmd": [
+                    "php bin/create_node_symlink.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Plugin to configure products that should be featured in a channel.",
+            "keywords": [
+                "sylius",
+                "sylius-plugin"
+            ],
+            "support": {
+                "source": "https://github.com/Vaalyn/sylius-featured-products-plugin/tree/master",
+                "issues": "https://github.com/Vaalyn/sylius-featured-products-plugin/issues"
+            },
+            "time": "2020-11-15T20:53:06+00:00"
+        },
+        {
             "name": "vaachar/sylius-shipping-information-page-plugin",
             "version": "dev-master",
             "source": {
@@ -21371,6 +21457,7 @@
         "mangoweb-sylius/sylius-sorting-plugin": 20,
         "sylius/invoicing-plugin": 20,
         "sylius/refund-plugin": 5,
+        "vaachar/sylius-featured-products-plugin": 20,
         "vaachar/sylius-shipping-information-page-plugin": 20,
         "wikimedia/composer-merge-plugin": 20
     },
@@ -21380,5 +21467,5 @@
         "php": "^7.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
