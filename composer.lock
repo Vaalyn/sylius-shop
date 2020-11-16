@@ -16966,7 +16966,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Vaalyn/sylius-featured-products-plugin",
-                "reference": "8a17f29eb373ec122eb58c1a083c6eb3905f578c"
+                "reference": "e8e37b692bd0dc09ae5d813b087d7015c9836115"
             },
             "require": {
                 "php": "^7.4",
@@ -17034,7 +17034,7 @@
                 "sylius",
                 "sylius-plugin"
             ],
-            "time": "2020-11-15T20:53:06+00:00"
+            "time": "2020-11-16T03:45:01+00:00"
         },
         {
             "name": "vaachar/sylius-shipping-information-page-plugin",
