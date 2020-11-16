@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Product;
 
+use BitBag\SyliusMolliePlugin\Entity\ProductTrait as MollieProductTrait;
 use BitBag\SyliusProductBundlePlugin\Entity\ProductBundlesAwareInterface;
 use BitBag\SyliusProductBundlePlugin\Entity\ProductBundlesAwareTrait;
 use Brille24\SyliusCustomerOptionsPlugin\Entity\ProductInterface as ProductCustomerOptionProductInterface;
@@ -35,6 +36,7 @@ class Product extends BaseProduct implements ProductBundlesAwareInterface, Docum
         __construct as protected customerOptionCapableConstructor;
     }
     use FeaturedProductTrait;
+    use MollieProductTrait;
 
     /**
      * @ORM\OneToOne(targetEntity="BitBag\SyliusProductBundlePlugin\Entity\ProductBundleInterface", mappedBy="product", cascade={"persist"})
@@ -42,6 +44,12 @@ class Product extends BaseProduct implements ProductBundlesAwareInterface, Docum
      * @var ProductBundleInterface
      */
     protected $productBundle;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BitBag\SyliusMolliePlugin\Entity\ProductType", inversedBy="productType")
+     * @ORM\JoinColumn(name="product_type_id", onDelete="SET NULL")
+     */
+    protected $productType;
 
     public function __construct()
     {
