@@ -24,6 +24,7 @@ sylius:
         privacy_policy: 'Datenschutzerklärung'
         terms_and_conditions: 'Allgemeine Geschäftsbedingungen'
         contact: 'Kontakt'
+        add_your_review: 'Bewerten'
 
     form:
         country:

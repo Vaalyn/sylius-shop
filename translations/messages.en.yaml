@@ -6,6 +6,7 @@ sylius:
         about: 'About us'
         ready: 'Processing'
         contact: 'Contact'
+        add_your_review: Add Review
 
 vaachar:
     tax_rate:
