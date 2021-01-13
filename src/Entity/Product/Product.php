@@ -17,6 +17,8 @@ use MonsieurBiz\SyliusSearchPlugin\Model\Documentable\DocumentableInterface;
 use MonsieurBiz\SyliusSearchPlugin\Model\Documentable\DocumentableProductTrait;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 use Sylius\Component\Product\Model\ProductTranslationInterface;
+use VaaChar\SyliusArchivableProductsPlugin\Entity\IsArchivableProductInterface;
+use VaaChar\SyliusArchivableProductsPlugin\Entity\Traits\ArchivableProductTrait;
 use VaaChar\SyliusFeaturedProductsPlugin\Entity\HasFeaturedProductInterface;
 use VaaChar\SyliusFeaturedProductsPlugin\Entity\Traits\FeaturedProductTrait;
 
@@ -24,7 +26,7 @@ use VaaChar\SyliusFeaturedProductsPlugin\Entity\Traits\FeaturedProductTrait;
  * @ORM\Entity
  * @ORM\Table(name="sylius_product")
  */
-class Product extends BaseProduct implements ProductBundlesAwareInterface, DocumentableInterface, HasSeoInterface, ProductCustomerOptionProductInterface, HasFeaturedProductInterface
+class Product extends BaseProduct implements ProductBundlesAwareInterface, DocumentableInterface, HasSeoInterface, ProductCustomerOptionProductInterface, HasFeaturedProductInterface, IsArchivableProductInterface
 {
     use ProductBundlesAwareTrait;
     use DocumentableProductTrait;
@@ -37,6 +39,7 @@ class Product extends BaseProduct implements ProductBundlesAwareInterface, Docum
     }
     use FeaturedProductTrait;
     use MollieProductTrait;
+    use ArchivableProductTrait;
 
     /**
      * @ORM\OneToOne(targetEntity="BitBag\SyliusProductBundlePlugin\Entity\ProductBundleInterface", mappedBy="product", cascade={"persist"})

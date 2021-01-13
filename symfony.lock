@@ -1131,6 +1131,9 @@
     "twig/twig": {
         "version": "v2.5.0"
     },
+    "vaachar/sylius-archivable-products-plugin": {
+        "version": "dev-master"
+    },
     "vaachar/sylius-featured-products-plugin": {
         "version": "dev-master"
     },

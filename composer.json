@@ -39,6 +39,7 @@
         "symfony/dotenv": "^4.4",
         "symfony/flex": "^1.9",
         "symfony/webpack-encore-bundle": "^1.7",
+        "vaachar/sylius-archivable-products-plugin": "^1.0",
         "vaachar/sylius-featured-products-plugin": "dev-master",
         "vaachar/sylius-shipping-information-page-plugin": "dev-master",
         "wikimedia/composer-merge-plugin": "dev-feature/composer-v2"

@@ -31,6 +31,8 @@ imports:
 
     - { resource: "@SyliusFeaturedProductsPlugin/Resources/config/config.yaml" }
 
+    - { resource: "@SyliusArchivableProductsPlugin/Resources/config/config.yaml" }
+
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
     images_dir: '/media/image/'

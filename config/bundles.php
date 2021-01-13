@@ -86,4 +86,5 @@ return [
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
     Sylius\AdminOrderCreationPlugin\SyliusAdminOrderCreationPlugin::class => ['all' => true],
     VaaChar\SyliusFeaturedProductsPlugin\SyliusFeaturedProductsPlugin::class => ['all' => true],
+    VaaChar\SyliusArchivableProductsPlugin\SyliusArchivableProductsPlugin::class => ['all' => true],
 ];

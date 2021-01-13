@@ -103,3 +103,10 @@ services:
 
     Odiseo\SyliusRbacPlugin\Access\Checker\RouteNameCheckerInterface:
         class: App\Access\Checker\HardcodedRouteNameChecker
+
+    sylius_archivable_products_plugin.entity_listener.product_variant:
+        class: App\EntityListener\SearchAwareProductVariantEntityListener
+        arguments:
+            - '@MonsieurBiz\SyliusSearchPlugin\Model\Document\Index\Indexer'
+        tags:
+            - { name: doctrine.orm.entity_listener, entity: Sylius\Component\Core\Model\ProductVariant, event: preUpdate }

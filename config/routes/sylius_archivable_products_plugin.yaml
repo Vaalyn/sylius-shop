@@ -1,0 +1,2 @@
+sylius_archivable_products_plugin:
+    resource: "@SyliusArchivableProductsPlugin/Resources/config/routing.yaml"
