@@ -1,4 +1,6 @@
-<div class="ui segment">
+{% set mealvouchersId = constant('BitBag\\SyliusMolliePlugin\\Payments\\Methods\\MealVoucher::MEAL_VOUCHERS') %}
+
+<div class="ui segment" id="mollie-payment-form">
     <h4 class="ui header">
         <div class="ui two column stackable grid">
             <div class="middle aligned column">
@@ -26,7 +28,13 @@
             <div class="content{% if 0 == loop.index0 %} active{% endif %}">
                 {{ form_row(methodForm.enabled) }}
                 {{ form_row(methodForm.name) }}
-                <div class="ui bottom aligned grid">
+                {% if methodForm.vars.value.methodId == mealvouchersId %}
+                    <div class="field">
+                        {{ form_widget(methodForm.defaultCategory) }}
+                        {{ methodForm.defaultCategory.vars.help|trans }}
+                    </div>
+                {% endif %}
+                <div class="field">
                     <div class="twelve wide column">
                         {{ form_row(methodForm.customizeMethodImage) }}
                     </div>
@@ -40,16 +48,38 @@
                     {% endif %}
                 </div>
                 <div class="field">
-                    {{ form_row(methodForm.countryLevel, { 'attr': {'class': 'fluid search'} }) }}
+                    {{ form_row(methodForm.country_restriction) }}
+                </div>
+                <div class="field">
+                    <div id="country-allowed_{{ loop.index0 }}">
+                        {{ form_row(methodForm.countryLevel_allowed, { 'attr': {'class': 'fluid search'} }) }}
+                    </div>
+                </div>
+                <div class="field">
+                    <div id="country-excluded_{{ loop.index0 }}">
+                        {{ form_row(methodForm.countryLevel_excluded, { 'attr': {'class': 'fluid search'} }) }}
+                    </div>
                 </div>
                 <div class="field">
                     <div class="fields">
                         <div class="twelve wide field">
-                            {{ form_row(methodForm.paymentType) }}
+                            {% if methodForm.vars.value.methodId == mealvouchersId %}
+                                {{ form_row(methodForm.paymentType, {'attr': {'disabled': 'disabled'}}) }}
+                                {{ form_help(methodForm.paymentType) }}
+                            {% else %}
+                                {{ form_row(methodForm.paymentType) }}
+                                {{ form_help(methodForm.paymentType) }}
+                            {% endif %}
                         </div>
                         <div class="four wide field">
                             {{ form_row(methodForm.orderExpiration) }}
                         </div>
+                    </div>
+                </div>
+                <div class="field">
+                    {{ form_row(methodForm.paymentDescription) }}
+                    <div id="payment_description_{{ name }}">
+                        {{ methodForm.paymentDescription.vars.help|trans|raw|nl2br }}
                     </div>
                 </div>
                 <h4 class="ui horizontal divider header">
