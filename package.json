@@ -16,7 +16,7 @@
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-import-resolver-babel-module": "^5.1.0",
     "eslint-plugin-import": "^2.18.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.0.1"
   },
   "scripts": {
